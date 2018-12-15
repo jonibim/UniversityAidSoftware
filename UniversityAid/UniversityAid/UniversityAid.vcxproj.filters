@@ -38,5 +38,11 @@
     <ClInclude Include="Pedagog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Libraries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
