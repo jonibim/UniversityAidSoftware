@@ -4,6 +4,7 @@ int main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fgjfgghj
 =======
 	Student Student2;
@@ -14,6 +15,9 @@ int main() {
 =======
 	fgjfgghj
 >>>>>>> parent of c5f32f5... FIxed Errors
+=======
+
+>>>>>>> parent of 058955b... test
 
 
 
