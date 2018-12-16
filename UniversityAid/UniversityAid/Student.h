@@ -19,9 +19,7 @@ public:
 		return password;
 	}
 
-	string tesT() {
 
-	}
 
 
 };
