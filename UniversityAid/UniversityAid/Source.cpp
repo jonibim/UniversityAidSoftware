@@ -5,6 +5,7 @@ int main() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	fgjfgghj
 =======
 	Student Student2;
@@ -18,6 +19,9 @@ int main() {
 =======
 
 >>>>>>> parent of 058955b... test
+=======
+	Student Student2;
+>>>>>>> parent of df7263d... shtova person
 
 
 
