@@ -1,26 +1,15 @@
 #pragma once
 using namespace std;
-#include "Libraries.h"
+#include "Faculty.h"
 class Departament {
 protected:
-
-	string clubs;
-	
+    string clubs;
 public:
-	int classes;
-	int labs;
-	int buildings;
+	Departament() :Faculty() {}
+	Departament(int classes,int labs,int secretary,int library) :
+		Faculty(classes, labs, secretary, library) {}
 
-	Departament() {
-		classes = 0;
-		labs = 0;
-		buildings = 0;
-	}
-	Departament(int classes, int labs, int buildings) {
-		this->classes = classes;
-		this->labs = labs;
-		this->buildings = buildings;
-	}
+	
 	void setClubs(string clubs) {
 		this->clubs = clubs;
 	}
