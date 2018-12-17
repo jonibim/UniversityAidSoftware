@@ -1,11 +1,15 @@
 #pragma once
+#include "Libraries.h"
 using namespace std;
 class Pedagog {
-	class Pedagog :public Person {
+class Pedagog :public Person {
+
 	private:
-		string ID;
+
+        string ID;
 		string password;
 		int paga;
+
     public:
 		Pedagog() :Person() {}
 		Pedagog(string name, string surname) :Person(name, surname) {}
