@@ -5,6 +5,8 @@ class Pedagog : public Person {
 
 private:
 		string password;
+		string ID; 
+		int paga;
 
 public:
 	Pedagog() :Person() {}
@@ -12,7 +14,21 @@ public:
 	string showName() {
 		return name;
 	}
-
+	
+	void setID() {
+		this->ID = ID;
+	}
+	string getID() {
+		return ID;
+	}
+	
+	void setPaga() {
+		this->paga = paga;
+	}
+	int getPaga() {
+		return paga;
+	}
+	
 	void setPassword() {
 		this->password = password;
 	}
