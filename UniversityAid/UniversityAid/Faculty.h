@@ -10,9 +10,20 @@ protected:
 
 public:
 	int buildings;
+	string emer;
+	string adrese;
+	vector<Departament> departament;
 
 	Faculty() {
 		buildings = 0;
+		emer= "";
+		adrese= "";
+	}
+	
+	Faculty(string emer, string adrese, vector<Departament>){
+		this->emer=emer;
+		this->adrese=adrese;
+		this->departament;
 	}
 	
 	Faculty(int classes, int labs, int secretary, int library) {
