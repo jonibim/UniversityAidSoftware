@@ -13,7 +13,15 @@ public:
 
 	Faculty() {
 		buildings = 0;
+	}
+	
+	Faculty(int classes, int labs, int secretary, int library) {
 
+		this->classes = classes;
+		this->labs = labs;
+		this->secretary = secretary;
+		this->library = library;
+	
 	}
 
 	Faculty(int buildings) {

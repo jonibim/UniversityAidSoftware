@@ -96,4 +96,16 @@ void mainMenu() {
 
 void addDepartament() {};
 void addFaculty() {};
-void addStudent() {};
+void addStudent() {
+	
+	cout << R"(
++-------------------------------------------+
+|               Add a Student               |
+| Enter Name (press Enter than) and Surname |
++-------------------------------------------+)" << endl;
+	string name, surname;
+	cin >> name;
+	cin >> surname;
+	Student std(name, surname);
+	//pergjysem
+};
