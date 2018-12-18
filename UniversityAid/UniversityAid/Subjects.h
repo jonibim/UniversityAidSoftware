@@ -19,7 +19,15 @@ public:
 		this->hours = hours;
 	}
 
-	string getHours() {
+	int getHours() {
 		return hours;
 	}
+	void setCredits(int credits) {
+		this->credits = credits;
+	}
+
+	int getCredits() {
+		return credits;
+	}
+
 };
