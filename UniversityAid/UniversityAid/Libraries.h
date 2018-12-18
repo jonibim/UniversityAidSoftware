@@ -6,4 +6,7 @@
 #include<vector>
 #include<string>
 #include<cmath>
+#include<cstdlib>
+#include<iostream>
+#include <windows.h>
 
