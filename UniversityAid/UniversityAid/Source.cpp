@@ -96,6 +96,7 @@ void mainMenu() {
 
 }
 
+
 void addDepartament() {
 	cout << R"(
 +---------------------+
@@ -107,24 +108,30 @@ void addDepartament() {
 	int id;
 	string name;
 	cin >> id;
+	while (cin.fail()) {
+		cout << "Wrong input. Please check your data again" << std::endl;
+		cin.clear();
+		cin.ignore(256, '\n'); //Shiko parametrat tek http://www.cplusplus.com/reference/istream/istream/ignore/ //Parandalon perseritjen e errorit
+		cin >> id;
+	}
 	cin >> name;
-	Departament departamentIRi(id, name);
+	Departament departamentIRi(id, name); //Krijohet nje departament i ri ku regjistrohen id dhe emri
 	cout << "Cilit fakultet do i perkasi?" << endl;
 	string fName;
 	cin >> fName;
-	int poz = -1;
-	for (int i = 0; i < faculties.size(); i++)
+	int poz = -1; //Vendoset poz i barabarte me -1, per te mos krijuar konflikte me vektorin ne rast se nuk gjendet emri, pasi poz -1 nuk ekziston ne vektor
+	for (int i = 0; i < faculties.size(); i++) //Nje cikel qe bredh ne vektorin faculties per te gjetur emrin e fakultetit te dhene 
 	{
 		if (faculties[i].name == fName)
 		{
-			poz = i;
+			poz = i; //poz merr indexin ku ndodhet emri i fakulteti ne vektor
 			break;
 		}
 	}
 	if (poz == -1)
 	{
 		cout << "This faculty cannot be found" << endl;
-		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl; 
 		char input;
 		cin >> input;
 		if (input == 'y' || 'Y') {
@@ -148,10 +155,10 @@ void addDepartament() {
 				}
 			}
 		}
-		string prompt;
-		cout << "Press Enter to return to Menu" << endl;
-		cin >> prompt;
-		return;
+			cout << "Press Enter to return to Menu";
+			cin.ignore();
+			cin.ignore(); //Pse 2 here? https://stackoverflow.com/a/37234270
+			return;
 	}
 	faculties[poz].departamentet.push_back(departamentIRi);
 };
