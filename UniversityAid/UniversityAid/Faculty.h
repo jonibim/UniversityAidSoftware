@@ -3,6 +3,49 @@
 #include "Departament.h"
 using namespace std;
 class Faculty {
+
+public:
+	string name;
+	string address;
+	vector<Departament> departamentet;
+	Faculty()
+	{
+		name = "";
+		address = "";
+	}
+	Faculty(string name, string address, vector<Departament> d)
+	{
+		this->name = name;
+		this->address = address;
+		this->departamentet = d;
+	}
+
+};
+
+void checkFaculties(vector<Faculty> faculties) {
+	cout << R"(
++----------------+
+| Available Data |
+|                |
++----------------+)" << endl;
+
+	for (int i = 0; i < faculties.size(); i++)
+	{
+		cout << "Te dhenat e fakultetit " << i + 1 << endl;
+		cout << faculties[i].name << endl;
+		cout << faculties[i].address << endl;
+		cout << "Departamentet jane: " << endl;
+		for (int j = 0; j < faculties[i].departamentet.size(); i++)
+		{
+			cout << "Emer: " << faculties[i].departamentet[j].nameDepartament << endl;
+			cout << "Id: " << faculties[i].departamentet[j].getId() << endl;
+		}
+	}
+};
+
+
+//leftover code
+
 //protected:
 //	int classes;
 //	int labs;
@@ -58,21 +101,3 @@ class Faculty {
 //	}
 //
 //
-
-public:
-	string name;
-	string address;
-	vector<Departament> departamentet;
-	Faculty()
-	{
-		name = "";
-		address = "";
-	}
-	Faculty(string name, string address, vector<Departament> d)
-	{
-		this->name = name;
-		this->address = address;
-		this->departamentet = d;
-	}
-
-};

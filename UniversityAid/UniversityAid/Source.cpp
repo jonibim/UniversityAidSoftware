@@ -1,5 +1,6 @@
 #include "Student.h"
 #include "Faculty.h"
+#include "S_Program.h"
 using namespace std;
 
 vector<Faculty> faculties;
@@ -107,13 +108,11 @@ void addDepartament() {
 	cout << "Add ID dhe Departmanet's name" << endl;
 	int id;
 	string name;
+	cout << "ID: ";
 	cin >> id;
-	while (cin.fail()) {
-		cout << "Wrong input. Please check your data again" << std::endl;
-		cin.clear();
-		cin.ignore(256, '\n'); //Shiko parametrat tek http://www.cplusplus.com/reference/istream/istream/ignore/ //Parandalon perseritjen e errorit
-		cin >> id;
-	}
+	verifyInt(id);
+	//noZeroInt(id);
+	cout << "Name: " << endl;
 	cin >> name;
 	Departament departamentIRi(id, name); //Krijohet nje departament i ri ku regjistrohen id dhe emri
 	cout << "Cilit fakultet do i perkasi?" << endl;
@@ -136,24 +135,7 @@ void addDepartament() {
 		cin >> input;
 		if (input == 'y' || 'Y') {
 			cls();
-			cout << R"(
-+----------------+
-| Available Data |
-|                |
-+----------------+)" << endl;
-
-			for (int i = 0; i < faculties.size(); i++)
-			{
-				cout << "Te dhenat e fakultetit " << i + 1 << endl;
-				cout << faculties[i].name << endl;
-				cout << faculties [i].address << endl;
-				cout << "Departamentet jane: " << endl;
-				for (int j = 0; j < faculties[i].departamentet.size(); i++)
-				{
-					cout << "Emer: " << faculties[i].departamentet[j].nameDepartament << endl;
-					cout << "Id: " << faculties[i].departamentet[j].getId() << endl;
-				}
-			}
+			checkFaculties(faculties);
 		}
 			cout << "Press Enter to return to Menu";
 			cin.ignore();
@@ -173,6 +155,56 @@ void addFaculty() {
 	faculties.push_back(fakultetIRi);
 };
 void addStudy() {
+	cout << R"(
++------------------------+
+| Adding a Study Program |
+|                        |
++------------------------+_)" << endl;
+	int id;
+	string name;
+	cout << "Add Study Program ID, name and years:" << endl;
+	cout << "ID: ";
+	cin >> id;
+	verifyInt(id);
+	//noZeroInt(id);
+	cout << endl;
+	int years;
+	cout << "Years: ";
+	cin >> years;
+	verifyInt(years);
+	//noZeroInt(years);
+	S_Program newProgram(id, name, years);
+	cout << "Cilit fakultet do i perkasi?" << endl;
+	string fName;
+	cin >> fName;
+	int poz = -1; 
+	for (int i = 0; i < faculties.size(); i++) 
+	{
+		if (faculties[i].name == fName)
+		{
+			poz = i; 
+			break;
+		}
+	}
+	if (poz == -1)
+	{
+		cout << "This faculty cannot be found" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		char input;
+		cin >> input;
+		if (input == 'y' || 'Y') {
+			cls();
+			checkFaculties(faculties);
+		}
+		cout << "Press Enter to return to Menu";
+		cin.ignore();
+		cin.ignore(); //Pse 2 here? https://stackoverflow.com/a/37234270
+		return;
+	}
+	//Tani vjen puna per te ndare mendjen se si do ta ruaje kete programin e studimit! Ose ne vektorin e fakultetit ose ne vektorin e Departamentit, do e vazhdoj
+	//neser se per momentin spo vjen ndonje ide/zgidhje
+
+
 	
 
 };
