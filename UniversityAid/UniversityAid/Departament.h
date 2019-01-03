@@ -1,26 +1,23 @@
 #pragma once
 using namespace std;
-#include "Faculty.h"
-#include "Subjects.h"//pse e ke bere include faculty? a nuk na duhet se nuk po e
+#include "S_Program.h"//pse e ke bere include faculty? a nuk na duhet se nuk po e
 //perdorim me trazhgimin? 
-//ktu tani duhet te krijojme programin e studimit
-//si vektor, edhe studentet 
 class Departament {
 protected:
 	int id;
 public:
 	string nameDepartament;
-	vector<Subjects> lendet;
+	vector<S_Program> programet;
 	Departament()
 	{
 		id = 0;
 		nameDepartament = "Unknown";
 	}
-	Departament( int id, string name, vector<Subjects> lendet)
+	Departament( int id, string name, vector<S_Program> programet)
 	{
 		this->id = id;
 		this->nameDepartament = name;
-		this->lendet = lendet; 
+		this->programet = programet;
 	}
 	int getId()
 	{
@@ -38,11 +35,11 @@ void checkDepartments(vector<Departament> departamentet) {
 		cout << "Te dhenat e departamentit " << i + 1 << endl;
 		cout << departamentet[i].nameDepartament << endl;
 		cout << "Lendet jane: " << endl;
-		for (int j = 0; j < departamentet[i].lendet.size(); i++)
+		for (int j = 0; j < departamentet[i].programet.size(); i++)
 		{
-			cout << "Emer: " << departamentet[i].lendet[j].name << endl;
-			cout << "Oret: " << departamentet[i].lendet[j].getHours() << endl;
-			cout << "Kreditet: " << departamentet[i].lendet[j].getCredits() << endl;
+			cout << "ID: " << departamentet[i].programet[j].getId() << endl;
+			cout << "Emer: " << departamentet[i].programet[j].nameProgram << endl;
+			cout << "Vitet: " << departamentet[i].programet[j].programYears << endl;
 		}
 	}
 };

@@ -108,14 +108,14 @@ void addDepartament() {
 	cout << "Add ID dhe Departmanet's name" << endl;
 	int id;
 	string name;
-	vector<Subjects> lendet;
+	vector<S_Program> programet;
 	cout << "ID: ";
 	cin >> id;
 	verifyInt(id);
 	//noZeroInt(id);
 	cout << "Name: " << endl;
 	cin >> name;
-	Departament departamentIRi(id, name, lendet); //Krijohet nje departament i ri ku regjistrohen id dhe emri
+	Departament departamentIRi(id, name, programet); //Krijohet nje departament i ri ku regjistrohen id dhe emri
 	cout << "Cilit fakultet do i perkasi?" << endl;
 	string fName;
 	cin >> fName;
@@ -161,20 +161,23 @@ void addStudy() {
 | Adding a Study Program |
 |                        |
 +------------------------+_)" << endl;
-	int id;
-	string name;
+	int Id;
+	string nameProgram;
 	cout << "Add Study Program ID, name and years:" << endl;
 	cout << "ID: ";
-	cin >> id;
-	verifyInt(id);
+	cin >> Id;
+	verifyInt(Id);
 	//noZeroInt(id);
 	cout << endl;
-	int years;
+	cout << "Name: ";
+	cin >> nameProgram;
+	cout << endl;
+	int programYears;
 	cout << "Years: ";
-	cin >> years;
-	verifyInt(years);
+	cin >> programYears;
+	verifyInt(programYears);
 	//noZeroInt(years);
-	S_Program newProgram(id, name, years);
+	S_Program newProgram(Id, nameProgram, programYears);
 	cout << "Cilit fakultet do i perkasi?" << endl;
 	string fName;
 	cin >> fName;
