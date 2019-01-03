@@ -44,7 +44,7 @@ public:
 			cout << programet[i].nameProgram << endl;
 			cout << programet[i].programYears << endl;
 			cout << "Lendet jane: " << endl;
-			for (int j = 0; j < programet[i].lendet.size(); i++)
+			for (int j = 0; j < programet[i].lendet.size(); j++)
 			{
 				cout << "Emer: " << programet[i].lendet[j].name<< endl;
 				cout << "Oret: " << programet[i].lendet[j].getHours() << endl;

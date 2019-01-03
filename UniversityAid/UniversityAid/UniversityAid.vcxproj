@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClInclude Include="Departament.h" />
     <ClInclude Include="Faculty.h" />
+    <ClInclude Include="Mark.h" />
     <ClInclude Include="Libraries.h" />
     <ClInclude Include="Pedagog.h" />
     <ClInclude Include="Person.h" />
