@@ -10,6 +10,7 @@ private:
 public:
 	int programYears;
 	string nameProgram;
+	vector<Subjects> sub;
 
 
 	S_Program() {

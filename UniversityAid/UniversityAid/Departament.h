@@ -17,7 +17,6 @@ public:
 	{
 		this->id = id;
 		this->nameDepartament = name;
-		//this->programet = program;
 	}
 	int getId()
 	{
