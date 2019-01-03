@@ -9,6 +9,7 @@ private:
 		int paga;
 
 public:
+	vector<Student> student;
 	Pedagog() :Person() {}
 	Pedagog(string name, string surname) :Person(name, surname) {}
 	string showName() {

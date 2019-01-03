@@ -11,6 +11,9 @@ void addDepartament();
 void addFaculty();
 void addStudy();
 void addSubject();
+void addStudentstoSubjects();
+void addPedagoge(int,int,int,int);
+void addStudent(int,int,int,int);
 void cls(void);
 
 int main() {
@@ -39,11 +42,12 @@ int main() {
 		}
 
 		if (choice > 3 && choice < 12) {
-			cout << "Under Construction :(" << endl;
+			cout << "WIP" << endl;
+			cout << "Debug Size" << endl;
 			/*Sleep(5000)*/;
 			DebugSize(faculties);
-			string asd;
-			cin >> asd;
+			string temp;
+			cin >> temp;
 		}
 
 		if (choice <= 0) {
@@ -142,7 +146,7 @@ void addDepartament() {
 		cout << "Check all the exsisiting faculties? (Y/N)" << endl; 
 		char input;
 		cin >> input;
-		if (input == 'y' || 'Y') {
+		if (input == 'y' || input == 'Y') {
 			cls();
 			checkFaculties(faculties);
 		}
@@ -208,7 +212,7 @@ void addStudy() {
 		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 		char input;
 		cin >> input;
-		if (input == 'y' || 'Y') {
+		if (input == 'y' || input == 'Y') {
 			cls();
 			checkFaculties(faculties);
 		}
@@ -230,11 +234,11 @@ void addStudy() {
 	}
 	if (poz2 == -1)
 	{
-		cout << "This faculty cannot be found" << endl;
+		cout << "This departament cannot be found" << endl;
 		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 		char input;
 		cin >> input;
-		if (input == 'y' || 'Y') {
+		if (input == 'y' || input == 'Y') {
 			cls();
 			checkFaculties(faculties);
 		}
@@ -268,6 +272,90 @@ void addSubject() {
 	cin >> hours;
 	verifyInt(hours);
 	Subjects newSubjects(name, hours, credits);
+	cout << "Cilit fakultet do i perkasi?" << endl;
+	string fName;
+	cin >> fName;
+	int poz = -1;
+	for (int i = 0; i < faculties.size(); i++)
+	{
+		if (faculties[i].name == fName)
+		{
+			poz = i;
+			break;
+		}
+	}
+	if (poz == -1)
+	{
+		cout << "This faculty cannot be found" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		char input;
+		cin >> input;
+		if (input == 'y' || input == 'Y') {
+			cls();
+			checkFaculties(faculties);
+		}
+		cout << "Press Enter to return to Menu";
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+	cout << "Cilit departament do i perkasi?" << endl;
+	cin >> fName;
+	int poz2 = -1;
+	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
+	{
+		if (faculties[poz].departamentet[i].nameDepartament == fName)
+		{
+			poz2 = i;
+			break;
+		}
+	}
+	if (poz2 == -1)
+	{
+		cout << "This departament cannot be found" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		char input;
+		cin >> input;
+		if (input == 'y' || input == 'Y') {
+			cls();
+			checkFaculties(faculties);
+		}
+		cout << "Press Enter to return to Menu";
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+	cout << "Cilit program do i perkasi?" << endl;
+	cin >> fName;
+	int poz3 = -1;
+	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
+	{
+		if (faculties[poz].departamentet[poz2].programet[i].nameProgram == fName)
+		{
+			poz3 = i;
+			break;
+		}
+	}
+	if (poz3 == -1)
+	{
+		cout << "This program cannot be found" << endl;
+		/*cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		char input;
+		cin >> input;
+		if (input == 'y' || 'Y') {
+			cls();
+			checkFaculties(faculties);
+		}*/
+		cout << "Press Enter to return to Menu";
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+	faculties[poz].departamentet[poz2].programet[poz3].sub.push_back(newSubjects);
+
+}
+
+void addStudentstoSubject() {
 	cout << "Cilit fakultet do i perkasi?" << endl;
 	string fName;
 	cin >> fName;
@@ -347,6 +435,94 @@ void addSubject() {
 		cin.ignore();
 		return;
 	}
-	faculties[poz].departamentet[poz2].programet[poz3].sub.push_back(newSubjects);
+	cout << "Cilit mesim do i perkasi?" << endl;
+	cin >> fName;
+	int poz4 = -1;
+	for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
+	{
+		if (faculties[poz].departamentet[poz2].programet[poz3].sub[i].name == fName)
+		{
+			poz4 = i;
+			break;
+		}
+	}
+	if (poz4 == -1)
+	{
+		cout << "This subject cannot be found" << endl;
+		/*cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		char input;
+		cin >> input;
+		if (input == 'y' || 'Y') {
+			cls();
+			checkFaculties(faculties);
+		}*/
+		cout << "Press Enter to return to Menu";
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
 
-}
+	if (faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.size() == 0) {
+		cout << R"(
++------------------------------------------------+
+| This subject doesn't have a pedagogue assigned |
+|                                                |
++------------------------------------------------+)";
+		cout << "Do you want to assign a pedagogue to " << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].name << " ? (Y/N)";
+		char prompt;
+
+		addPedagoge(poz, poz2, poz3, poz4);
+	}
+
+	else
+	{
+		addStudent(poz, poz2, poz3, poz4);
+		}
+	}
+
+	void addPedagoge(int poz, int poz2, int poz3, int poz4) {
+		cout << R"(
++--------------------+
+| Adding a Pedagogue |
+|                    |
++--------------------+
+)";
+
+	}
+
+	void addStudent(int poz, int poz2, int poz3, int poz4) {
+		cout << R"(
++------------------+
+| Adding a Student |
+|                  |
++------------------+
+)";
+		cout << "Cilit pedagog?" << endl;
+		string fName;
+		cin >> fName;
+		int poz5 = -1;
+		for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.size(); i++)
+		{
+			if (faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[i].name == fName)
+			{
+				poz5 = i;
+				break;
+			}
+		}
+		if (poz5 == -1)
+		{
+			cout << "This pedagoge cannot be found" << endl;
+			/*cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+			char input;
+			cin >> input;
+			if (input == 'y' || 'Y') {
+				cls();
+				checkFaculties(faculties);
+			}*/
+			cout << "Press Enter to return to Menu";
+			cin.ignore();
+			cin.ignore();
+			return;
+		}
+		//faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[poz5].student.push_back(//do e shtoj me vone);
+	}

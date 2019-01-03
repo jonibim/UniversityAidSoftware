@@ -9,7 +9,7 @@ private:
 
 public:
 	string name;
-
+	vector<Pedagog> pedagog;
 	Subjects() {
 		name = "";
 	}

@@ -11,6 +11,7 @@ public:
 	vector<Departament> departamentet;
 	vector<S_Program> programet;
 	vector<Subjects> sub;
+	vector<Student> studen;
 
 	Faculty()
 	{
