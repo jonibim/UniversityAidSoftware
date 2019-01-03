@@ -34,7 +34,7 @@ void checkDepartments(vector<Departament> departamentet) {
 	{
 		cout << "Te dhenat e departamentit " << i + 1 << endl;
 		cout << departamentet[i].nameDepartament << endl;
-		cout << "Lendet jane: " << endl;
+		cout << "Programet jane: " << endl;
 		for (int j = 0; j < departamentet[i].programet.size(); i++)
 		{
 			cout << "ID: " << departamentet[i].programet[j].getId() << endl;

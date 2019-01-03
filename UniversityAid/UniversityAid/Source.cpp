@@ -163,6 +163,7 @@ void addStudy() {
 +------------------------+_)" << endl;
 	int Id;
 	string nameProgram;
+	vector<Subjects> lendet;
 	cout << "Add Study Program ID, name and years:" << endl;
 	cout << "ID: ";
 	cin >> Id;
@@ -177,7 +178,7 @@ void addStudy() {
 	cin >> programYears;
 	verifyInt(programYears);
 	//noZeroInt(years);
-	S_Program newProgram(Id, nameProgram, programYears);
+	S_Program newProgram(Id, nameProgram, programYears, lendet);
 	cout << "Cilit fakultet do i perkasi?" << endl;
 	string fName;
 	cin >> fName;
