@@ -109,13 +109,15 @@ void addDepartament() {
 	int id;
 	string name;
 	vector<S_Program> programet;
+	vector<Pedagog> pedagog;
+	vector<Student> student;
 	cout << "ID: ";
 	cin >> id;
 	verifyInt(id);
 	//noZeroInt(id);
 	cout << "Name: " << endl;
 	cin >> name;
-	Departament departamentIRi(id, name, programet); //Krijohet nje departament i ri ku regjistrohen id dhe emri
+	Departament departamentIRi(id, name, programet, pedagog, student); //Krijohet nje departament i ri ku regjistrohen id dhe emri
 	cout << "Cilit fakultet do i perkasi?" << endl;
 	string fName;
 	cin >> fName;

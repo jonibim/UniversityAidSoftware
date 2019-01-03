@@ -1,6 +1,7 @@
 #pragma once
 using namespace std;
-#include "S_Program.h"//pse e ke bere include faculty? a nuk na duhet se nuk po e
+#include "S_Program.h"
+#include "Pedagog.h"//pse e ke bere include faculty? a nuk na duhet se nuk po e
 //perdorim me trazhgimin? 
 class Departament {
 protected:
@@ -8,16 +9,21 @@ protected:
 public:
 	string nameDepartament;
 	vector<S_Program> programet;
+	vector<Pedagog> pedagog;
+	vector<Student> student; 
 	Departament()
 	{
 		id = 0;
 		nameDepartament = "Unknown";
 	}
-	Departament( int id, string name, vector<S_Program> programet)
+	Departament( int id, string name, vector<S_Program> programet, vector<Pedagog> pedagog, 
+		vector<Student> student)
 	{
 		this->id = id;
 		this->nameDepartament = name;
 		this->programet = programet;
+		this->pedagog = pedagog;
+		this->student = student;
 	}
 	int getId()
 	{
@@ -41,6 +47,19 @@ void checkDepartments(vector<Departament> departamentet) {
 			cout << "Emer: " << departamentet[i].programet[j].nameProgram << endl;
 			cout << "Vitet: " << departamentet[i].programet[j].programYears << endl;
 		}
+		for (int s = 0; s < departamentet[i].pedagog.size(); i++) {
+			cout << "Emri: " << departamentet[i].pedagog[s].name << endl;
+			cout << "Mbiemri: " << departamentet[i].pedagog[s].surname << endl;
+			cout << "Password:" << departamentet[i].pedagog[s].getPassword() << endl;
+			cout << "ID:" << departamentet[i].pedagog[s].getID() << endl;
+			cout << "Paga:" << departamentet[i].pedagog[s].getPaga() << endl;
+			}
+		for (int u = 0; u < departamentet[i].student.size(); i++) {
+			cout << "Emri: " << departamentet[i].student[u].name << endl;
+			cout << "Mbiemri: " << departamentet[i].student[u].surname << endl;
+			cout << "Password:" << departamentet[i].student[u].getPassword() << endl;
+		}
+
 	}
 };
 
