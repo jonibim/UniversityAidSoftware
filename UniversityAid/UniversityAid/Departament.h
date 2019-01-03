@@ -41,20 +41,20 @@ void checkDepartments(vector<Departament> departamentet) {
 		cout << "Te dhenat e departamentit " << i + 1 << endl;
 		cout << departamentet[i].nameDepartament << endl;
 		cout << "Programet jane: " << endl;
-		for (int j = 0; j < departamentet[i].programet.size(); i++)
+		for (int j = 0; j < departamentet[i].programet.size(); j++)
 		{
 			cout << "ID: " << departamentet[i].programet[j].getId() << endl;
 			cout << "Emer: " << departamentet[i].programet[j].nameProgram << endl;
 			cout << "Vitet: " << departamentet[i].programet[j].programYears << endl;
 		}
-		for (int s = 0; s < departamentet[i].pedagog.size(); i++) {
+		for (int s = 0; s < departamentet[i].pedagog.size(); s++) {
 			cout << "Emri: " << departamentet[i].pedagog[s].name << endl;
 			cout << "Mbiemri: " << departamentet[i].pedagog[s].surname << endl;
 			cout << "Password:" << departamentet[i].pedagog[s].getPassword() << endl;
 			cout << "ID:" << departamentet[i].pedagog[s].getID() << endl;
 			cout << "Paga:" << departamentet[i].pedagog[s].getPaga() << endl;
 			}
-		for (int u = 0; u < departamentet[i].student.size(); i++) {
+		for (int u = 0; u < departamentet[i].student.size(); u++) {
 			cout << "Emri: " << departamentet[i].student[u].name << endl;
 			cout << "Mbiemri: " << departamentet[i].student[u].surname << endl;
 			cout << "Password:" << departamentet[i].student[u].getPassword() << endl;

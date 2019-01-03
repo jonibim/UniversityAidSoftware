@@ -35,7 +35,7 @@ void checkFaculties(vector<Faculty> faculties) {
 		cout << faculties[i].name << endl;
 		cout << faculties[i].address << endl;
 		cout << "Departamentet jane: " << endl;
-		for (int j = 0; j < faculties[i].departamentet.size(); i++)
+		for (int j = 0; j < faculties[i].departamentet.size(); j++)
 		{
 			cout << "Emer: " << faculties[i].departamentet[j].nameDepartament << endl;
 			cout << "Id: " << faculties[i].departamentet[j].getId() << endl;
