@@ -198,11 +198,36 @@ void addStudy() {
 		}
 		cout << "Press Enter to return to Menu";
 		cin.ignore();
-		cin.ignore(); //Pse 2 here? https://stackoverflow.com/a/37234270
+		cin.ignore(); 
 		return;
 	}
-	//Tani vjen puna per te ndare mendjen se si do ta ruaje kete programin e studimit! Ose ne vektorin e fakultetit ose ne vektorin e Departamentit, do e vazhdoj
-	//neser se per momentin spo vjen ndonje ide/zgidhje
+	cout << "Cilit departament do i perkasi?" << endl;
+	cin >> fName;
+	int poz2 = -1;
+	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
+	{
+		if (faculties[poz].departamentet[i].nameDepartament == fName)
+		{
+			poz2 = i;
+			break;
+		}
+	}
+	if (poz2 == -1)
+	{
+		cout << "This faculty cannot be found" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		char input;
+		cin >> input;
+		if (input == 'y' || 'Y') {
+			cls();
+			checkFaculties(faculties);
+		}
+		cout << "Press Enter to return to Menu";
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+	faculties[poz].departamentet[poz2].programet.push_back(newProgram);
 
 
 	

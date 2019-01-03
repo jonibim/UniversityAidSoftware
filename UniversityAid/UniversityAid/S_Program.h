@@ -25,5 +25,14 @@ public:
 		
 	}
 
+	int getId()
+	{
+		return id;
+	}
+	void setId(int Id)
+	{
+		this->id = Id;
+	}
+
 
 };

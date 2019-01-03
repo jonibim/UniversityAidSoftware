@@ -17,7 +17,8 @@ public:
 	{
 		this->name = name;
 		this->address = address;
-		this->departamentet = d;
+		this->departamentet = d;.
+
 	}
 
 };
