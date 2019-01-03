@@ -1,6 +1,7 @@
 #include "Student.h"
 #include "Faculty.h"
 #include "S_Program.h"
+#include "Departament.h"
 using namespace std;
 
 vector<Faculty> faculties;
