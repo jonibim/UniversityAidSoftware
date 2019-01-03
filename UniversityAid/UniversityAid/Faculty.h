@@ -23,7 +23,7 @@ public:
 		this->address = address;
 		this->departamentet = d;
 		this->programet = prog;
-		this->sub;
+		this->sub = sub;
 
 	}
 
@@ -72,7 +72,25 @@ void checkDepartments(vector<Departament> departamentet) {
 			cout << "Vitet: " << departamentet[i].programet[j].programYears << endl;
 		}
 	}
+}
+
+void checkPrograms(vector<S_Program> programet) {
+	for (int i = 0; i < programet.size(); i++)
+	{
+		cout << "Te dhenat e programit " << i + 1 << endl;
+		cout << programet[i].Id << endl;
+		cout << programet[i].nameProgram << endl;
+		cout << programet[i].programYears << endl;
+		cout << "Lendet jane: " << endl;
+		for (int j = 0; j < programet[i].lendet.size(); i++)
+		{
+			cout << "Emer: " << programet[i].lendet[j].name << endl;
+			cout << "Oret: " << programet[i].lendet[j].getHours() << endl;
+			cout << "Kreditet: " << programet[i].lendet[j].getCredits() << endl;
+		}
+	}
 };
+
 
 //leftover code
 
