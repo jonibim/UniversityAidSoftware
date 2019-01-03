@@ -10,6 +10,7 @@ void mainMenu();
 void addDepartament();
 void addFaculty();
 void addStudy();
+void addSubject();
 void cls(void);
 
 int main() {
@@ -33,9 +34,16 @@ int main() {
 			addStudy();
 		}
 
+		if (choice == 4) {
+			addSubject();
+		}
+
 		if (choice > 3 && choice < 12) {
 			cout << "Under Construction :(" << endl;
-			Sleep(5000);
+			/*Sleep(5000)*/;
+			DebugSize(faculties);
+			string asd;
+			cin >> asd;
 		}
 
 		if (choice <= 0) {
@@ -115,16 +123,15 @@ void addDepartament() {
 	//noZeroInt(id);
 	cout << "Name: " << endl;
 	cin >> name;
-	Departament departamentIRi(id, name); //Krijohet nje departament i ri ku regjistrohen id dhe emri
+	Departament departamentIRi(id, name); 
 	cout << "Cilit fakultet do i perkasi?" << endl;
 	string fName;
 	cin >> fName;
-	int poz = -1; //Vendoset poz i barabarte me -1, per te mos krijuar konflikte me vektorin ne rast se nuk gjendet emri, pasi poz -1 nuk ekziston ne vektor
-	for (int i = 0; i < faculties.size(); i++) //Nje cikel qe bredh ne vektorin faculties per te gjetur emrin e fakultetit te dhene 
-	{
+	int poz = -1; 
+	for (int i = 0; i < faculties.size(); i++) 	{
 		if (faculties[i].name == fName)
 		{
-			poz = i; //poz merr indexin ku ndodhet emri i fakulteti ne vektor
+			poz = i; 
 			break;
 		}
 	}
@@ -146,6 +153,12 @@ void addDepartament() {
 	faculties[poz].departamentet.push_back(departamentIRi);
 };
 void addFaculty() {
+	cout << R"(
++------------------+
+| Adding a Faculty |
+|                  |
++------------------+
+)" << endl;
 	string adresa, emer;
 	cout << "Vendosni emrin dhe adresen e Fakultetit" << endl;
 	cin >> emer;
@@ -168,7 +181,7 @@ void addStudy() {
 	cin >> id;
 	verifyInt(id);
 	//noZeroInt(id);
-	cout << endl;
+	cin >> name;
 	int years;
 	cout << "Years: ";
 	cin >> years;
@@ -234,3 +247,23 @@ void addStudy() {
 	
 
 };
+void addSubject() {
+	cout << R"(
++------------------+
+| Adding a Subject |
+|                  |
++------------------+)" << endl;
+	int credits, hours;
+	string name;
+	cout << "Add Subject name, credits and hours:" << endl;
+	cout << "Name: ";
+	cin >> name;
+	cout << "Credits: ";
+	cin >> credits;
+	verifyInt(credits);
+	cout << "Hours: ";
+	cin >> hours;
+	verifyInt(hours);
+	Subjects newSubjects()
+
+}

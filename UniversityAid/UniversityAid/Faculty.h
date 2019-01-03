@@ -1,6 +1,7 @@
 #pragma once
 #include "Libraries.h"
 #include "Departament.h"
+#include "Subjects.h"
 using namespace std;
 class Faculty {
 
@@ -8,20 +9,34 @@ public:
 	string name;
 	string address;
 	vector<Departament> departamentet;
+	vector<S_Program> programet;
+	vector<Subjects> sub;
+
 	Faculty()
 	{
 		name = "";
 		address = "";
 	}
-	Faculty(string name, string address, vector<Departament> d)
+	Faculty(string name, string address, vector<Departament> d, vector<S_Program> prog, vector<Subjects> sub )
 	{
 		this->name = name;
 		this->address = address;
 		this->departamentet = d;
+		this->programet = prog;
+		this->sub;
 
 	}
 
 };
+
+void DebugSize(vector<Faculty> faculties) {
+
+	cout << faculties.size()<<endl;
+	for (int i = 0; i < faculties.size(); i++) {
+		cout << faculties[i].departamentet.size() << endl;
+	}
+
+}
 
 void checkFaculties(vector<Faculty> faculties) {
 	cout << R"(
@@ -36,7 +51,7 @@ void checkFaculties(vector<Faculty> faculties) {
 		cout << faculties[i].name << endl;
 		cout << faculties[i].address << endl;
 		cout << "Departamentet jane: " << endl;
-		for (int j = 0; j < faculties[i].departamentet.size(); i++)
+		for (int j = 0; j < faculties[i].departamentet.size(); j++)
 		{
 			cout << "Emer: " << faculties[i].departamentet[j].nameDepartament << endl;
 			cout << "Id: " << faculties[i].departamentet[j].getId() << endl;
@@ -50,7 +65,7 @@ void checkDepartments(vector<Departament> departamentet) {
 		cout << "Te dhenat e departamentit " << i + 1 << endl;
 		cout << departamentet[i].nameDepartament << endl;
 		cout << "Lendet jane: " << endl;
-		for (int j = 0; j < departamentet[i].programet.size(); i++)
+		for (int j = 0; j < departamentet[i].programet.size(); j++)
 		{
 			cout << "ID: " << departamentet[i].programet[j].getId() << endl;
 			cout << "Emer: " << departamentet[i].programet[j].nameProgram << endl;
