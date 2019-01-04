@@ -11,7 +11,7 @@ void addDepartament();
 void addFaculty();
 void addStudy();
 void addSubject();
-void addStudentstoSubjects();
+void addStudentstoSubject();
 void addPedagoge(int,int,int,int);
 void addStudent(int,int,int,int);
 void cls(void);
@@ -39,6 +39,10 @@ int main() {
 
 		if (choice == 4) {
 			addSubject();
+		}
+
+		if (choice == 5) {
+			addStudentstoSubject();
 		}
 
 		if (choice > 3 && choice < 12) {
@@ -339,13 +343,13 @@ void addSubject() {
 	if (poz3 == -1)
 	{
 		cout << "This program cannot be found" << endl;
-		/*cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 		char input;
 		cin >> input;
-		if (input == 'y' || 'Y') {
+		if (input == 'y' || input == 'Y') {
 			cls();
 			checkFaculties(faculties);
-		}*/
+		}
 		cout << "Press Enter to return to Menu";
 		cin.ignore();
 		cin.ignore();
@@ -400,7 +404,7 @@ void addStudentstoSubject() {
 		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 		char input;
 		cin >> input;
-		if (input == 'y' || 'Y') {
+		if (input == 'y' || input == 'Y') {
 			cls();
 			checkFaculties(faculties);
 		}
@@ -423,13 +427,13 @@ void addStudentstoSubject() {
 	if (poz3 == -1)
 	{
 		cout << "This program cannot be found" << endl;
-		/*cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 		char input;
 		cin >> input;
-		if (input == 'y' || 'Y') {
+		if (input == 'y' || input == 'Y') {
 			cls();
 			checkFaculties(faculties);
-		}*/
+		}
 		cout << "Press Enter to return to Menu";
 		cin.ignore();
 		cin.ignore();
@@ -449,13 +453,13 @@ void addStudentstoSubject() {
 	if (poz4 == -1)
 	{
 		cout << "This subject cannot be found" << endl;
-		/*cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 		char input;
 		cin >> input;
-		if (input == 'y' || 'Y') {
+		if (input == 'y' || input == 'Y') {
 			cls();
 			checkFaculties(faculties);
-		}*/
+		}
 		cout << "Press Enter to return to Menu";
 		cin.ignore();
 		cin.ignore();
@@ -469,14 +473,14 @@ void addStudentstoSubject() {
 |                                                |
 +------------------------------------------------+)";
 		cout << "Do you want to assign a pedagogue to " << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].name << " ? (Y/N)";
-		char prompt;
+		//char prompt;
 
 		addPedagoge(poz, poz2, poz3, poz4);
 	}
 
 	else
 	{
-		addStudent(poz, poz2, poz3, poz4);
+		//addStudent(poz, poz2, poz3, poz4);
 		}
 	}
 
@@ -487,6 +491,30 @@ void addStudentstoSubject() {
 |                    |
 +--------------------+
 )";
+		cout << "Add Pedagogue ID, name, surname, salary, address, postalcode and birthday:" << endl;
+		cout << "ID:  ";
+		int id, salary, postalcode;
+		cin >> id;
+		verifyInt(id);
+		string name, surname, address, birthday, password;
+		cout << "Name: ";
+		cin >> name;
+		cout << "Surname: ";
+		cin >> surname;
+		cout << "Password: ";
+		cin >> password;
+		cout << "Salary";
+		cin >> salary;
+		verifyInt(salary);
+		cout << "Address: ";
+		cin >> address;
+		cout << " Postal Code: ";
+		cin >> postalcode;
+		verifyInt(postalcode);
+		cout << "Birthday: ";
+		cin >> birthday;
+		Pedagog newPedagogue(id,password,salary,name,surname,address,postalcode,birthday);
+		faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.push_back(newPedagogue);
 
 	}
 
@@ -512,17 +540,40 @@ void addStudentstoSubject() {
 		if (poz5 == -1)
 		{
 			cout << "This pedagoge cannot be found" << endl;
-			/*cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+			cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 			char input;
 			cin >> input;
-			if (input == 'y' || 'Y') {
+			if (input == 'y' || input == 'Y') {
 				cls();
 				checkFaculties(faculties);
-			}*/
+			}
 			cout << "Press Enter to return to Menu";
 			cin.ignore();
 			cin.ignore();
 			return;
 		}
-		//faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[poz5].student.push_back(//do e shtoj me vone);
+		cout << "Add Student ID, name, surname, salary, address, postalcode and birthday:" << endl;
+		cout << "ID:  ";
+		int id, postalcode, age;
+		cin >> id;
+		verifyInt(id);
+		string name, surname, address, birthday, password;
+		cout << "Name: ";
+		cin >> name;
+		cout << "Surname: ";
+		cin >> surname;
+		cout << "Password: ";
+		cin >> password;
+		cout << "Age: ";
+		cin >> age;
+		verifyInt(age);
+		cout << "Address: ";
+		cin >> address;
+		cout << " Postal Code: ";
+		cin >> postalcode;
+		verifyInt(postalcode);
+		cout << "Birthday: ";
+		cin >> birthday;
+		Student newStudent(name, surname,password,age,address,postalcode,birthday);
+		faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[poz5].student.push_back(newStudent);
 	}
