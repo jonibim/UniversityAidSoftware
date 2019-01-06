@@ -7,6 +7,10 @@
 #include<cstdlib>
 #include<iostream>
 #include <windows.h>
+#include <conio.h> 
+#include <process.h> 
+#include <stdio.h> 
+#include <exception>
 //#include<ifstream>
 //#include<ofstream>
 

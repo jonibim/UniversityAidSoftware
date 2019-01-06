@@ -43,7 +43,6 @@ void checkFaculties(vector<Faculty> faculties) {
 	cout << R"(
 +----------------+
 | Available Data |
-|                |
 +----------------+)" << endl;
 
 	for (int i = 0; i < faculties.size(); i++)
@@ -103,6 +102,53 @@ void promptocheck(vector<Faculty> faculties) {
 		cin.ignore();
 		cin.ignore();
 	}
+}
+
+void writeFaculties(vector<Faculty> faculties, int i, ofstream &write) {
+	if (write.is_open()) {
+		for (int j = 0; j < faculties[i].departamentet.size(); j++)
+		{
+			write << " Name: " << faculties[i].departamentet[j].nameDepartament << endl;
+			write << " Id: " << faculties[i].departamentet[j].getId() << endl;
+			write << "  Programs: " << endl;
+			for (int k = 0; k < faculties[i].departamentet[j].programet.size(); k++) {
+				write << "  Name: " << faculties[i].departamentet[j].programet[k].nameProgram << endl;
+				write << "  ID: " << faculties[i].departamentet[j].programet[k].getId() << endl;
+				write << "  Years: " << faculties[i].departamentet[j].programet[k].programYears << endl;
+				write << "   Subjects: " << endl;
+				for (int l = 0; l < faculties[i].departamentet[j].programet[k].sub.size(); l++) {
+					write << "    Name: " << faculties[i].departamentet[j].programet[k].sub[l].name << endl;
+					write << "    ID: " << faculties[i].departamentet[j].programet[k].sub[l].getCredits() << endl;
+					write << "    Hours: " << faculties[i].departamentet[j].programet[k].sub[l].getHours() << endl;
+					write << "     Pedagogue: " << endl;
+					for (int m = 0; m < faculties[i].departamentet[j].programet[k].sub[l].pedagog.size(); m++) {
+						write << "     Name: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].name << endl;
+						write << "     Surname: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].surname << endl;
+						write << "     ID: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].getID() << endl;
+						write << "     Salary: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].getPaga() << endl;
+						write << "     Age: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].getAge() << endl;
+						write << "     Address: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].getAddress() << endl;
+						write << "     Postal Code: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].getPS() << endl;
+						write << "     Birthday: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].getBirthday() << endl;
+						write << "      Students:" << endl;
+						for (int n = 0; n < faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student.size(); n++) {
+							write << "      Name: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name << endl;
+							write << "      Surname: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname << endl;
+							//write << "      ID: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n]. << endl;
+							write << "      Age: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].getAge() << endl;
+							write << "      Address: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].getAddress() << endl;
+							write << "      Postal Code: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].getPS() << endl;
+							write << "      Birthday: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].getBirthday() << endl;
+						}
+					}
+				}
+			}
+		}
+	}
+	else {
+		cout << "Unable to open file";
+	}
+
 }
 
 //void checkDepartments(vector<Departament> departamentet) {

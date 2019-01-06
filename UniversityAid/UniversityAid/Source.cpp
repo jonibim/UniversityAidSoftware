@@ -18,6 +18,8 @@ void deregisterStudent();
 void deleteStudy();
 void deleteDepartment();
 void deleteFaculty();
+void checkPedagogue();
+void createDirectories();
 void cls(void);
 
 int main() {
@@ -70,7 +72,7 @@ int main() {
 		}
 
 		if (choice == 11) {
-
+			checkPedagogue();
 		}
 
 		if (choice == 13) {
@@ -80,11 +82,28 @@ int main() {
 			cin.ignore();
 		}
 
+		if (choice == 14) {
+			createDirectories();
+		}
+
 		if (choice <= 0) {
 			cout << "Select an option using numbers from 1 - 12" << endl;
 		}
 
 		if (choice == 12) {
+			if (faculties.size() != 0) {
+				cout << R"(
++------------------------------------+
+| Do you want to save current state? |
++------------------------------------+
+)";
+				cout << "Y/N: ";
+				char input;
+				cin >> input;
+				if (input == 'Y' || input == 'y') {
+					createDirectories();
+				}
+			}
 			return 0;
 		}
 
@@ -141,7 +160,6 @@ void addDepartament() {
 	cout << R"(
 +---------------------+
 | Adding a Department |
-|                     |
 +---------------------+
 )" << endl;
 
@@ -179,7 +197,6 @@ void addFaculty() {
 	cout << R"(
 +------------------+
 | Adding a Faculty |
-|                  |
 +------------------+
 )" << endl;
 	string adresa, emer;
@@ -195,7 +212,6 @@ void addStudy() {
 	cout << R"(
 +------------------------+
 | Adding a Study Program |
-|                        |
 +------------------------+
 )" << endl;
 	int id;
@@ -259,7 +275,6 @@ void addSubject() {
 	cout << R"(
 +------------------+
 | Adding a Subject |
-|                  |
 +------------------+
 )" << endl;
 	int credits, hours;
@@ -444,7 +459,6 @@ void addStudentstoSubject() {
 		cout << R"(
 +--------------------+
 | Adding a Pedagogue |
-|                    |
 +--------------------+
 )";
 		cout << "Add Pedagogue ID, name, surname, salary, address, postalcode and birthday:" << endl;
@@ -478,7 +492,6 @@ void addStudentstoSubject() {
 		cout << R"(
 +------------------+
 | Adding a Student |
-|                  |
 +------------------+
 )";
 		cout << "Cilit pedagog?" << endl;
@@ -530,7 +543,6 @@ void addStudentstoSubject() {
 		cout << R"(
 +----------------------+
 | Searching Student... |
-|                      |
 +----------------------+
 )";
 		cout << "Enter First Name: ";
@@ -626,7 +638,6 @@ void addStudentstoSubject() {
 			cout << R"(
 +-----------------+
 | Student Deleted |
-|                 |
 +-----------------+
 )";
 			Sleep(4000);
@@ -638,7 +649,6 @@ void addStudentstoSubject() {
 		cout << R"(
 +----------------------------+
 | Searching Study Program... |
-|                            |
 +----------------------------+
 )";
 		string fName;
@@ -708,7 +718,6 @@ void addStudentstoSubject() {
 			cout << R"(
 +-----------------------+
 | Study Program Deleted |
-|                       |
 +-----------------------+
 )";
 			Sleep(4000);
@@ -720,7 +729,6 @@ void addStudentstoSubject() {
 		cout<<R"(
 +-------------------------+
 | Searching Department... |
-|                         |
 +-------------------------+
 )";
 		string fName;
@@ -777,7 +785,6 @@ void addStudentstoSubject() {
 			cout << R"(
 +--------------------+
 | Department Deleted |
-|                    |
 +--------------------+
 )";
 			Sleep(4000);
@@ -790,7 +797,6 @@ void addStudentstoSubject() {
 		cout << R"(
 +----------------------+
 | Searching Faculty... |
-|                      |
 +----------------------+
 )";
 		for (int i = 0; i < faculties.size(); i++) {
@@ -818,9 +824,153 @@ void addStudentstoSubject() {
 		cout << R"(
 +-----------------+
 | Faculty Deleted |
-|                 |
 +-----------------+
 )";
 		Sleep(4000);
 
+	}
+
+	void checkPedagogue() {
+		cout << "Cilit fakultet do i perkasi?" << endl;
+		string fName;
+		cin >> fName;
+		int poz = -1;
+		for (int i = 0; i < faculties.size(); i++)
+		{
+			if (faculties[i].name == fName)
+			{
+				poz = i;
+				break;
+			}
+		}
+		if (poz == -1)
+		{
+			cout << "This faculty cannot be found" << endl;
+			cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+			promptocheck(faculties);
+			return;
+		}
+		cout << "Cilit departament do i perkasi?" << endl;
+		cin >> fName;
+		int poz2 = -1;
+		for (int i = 0; i < faculties[poz].departamentet.size(); i++)
+		{
+			if (faculties[poz].departamentet[i].nameDepartament == fName)
+			{
+				poz2 = i;
+				break;
+			}
+		}
+		if (poz2 == -1)
+		{
+			cout << "This departament cannot be found" << endl;
+			cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+			promptocheck(faculties);
+			return;
+		}
+		cout << "Cilit program do i perkasi?" << endl;
+		cin >> fName;
+		int poz3 = -1;
+		for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
+		{
+			if (faculties[poz].departamentet[poz2].programet[i].nameProgram == fName)
+			{
+				poz3 = i;
+				break;
+			}
+		}
+		if (poz3 == -1)
+		{
+			cout << "This program cannot be found" << endl;
+			cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+			promptocheck(faculties);
+			return;
+		}
+		cout << "Cilit mesim do i perkasi?" << endl;
+		cin >> fName;
+		int poz4 = -1;
+		for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
+		{
+			if (faculties[poz].departamentet[poz2].programet[poz3].sub[i].name == fName)
+			{
+				poz4 = i;
+				break;
+			}
+		}
+		if (poz4 == -1)
+		{
+			cout << "This subject cannot be found" << endl;
+			cout << "Check all the exsisiting faculties? (Y/N)" << endl;
+			promptocheck(faculties);
+			return;
+		}
+
+		if (faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.size() != 0) {
+			cout << R"(
++---------------------------------------------+
+| This subject does have a pedagogue assigned |
+|    Do you want to add another pedagogue     |
+|                      or                     |
+|    Do you want to overwrite a pedagogue?    |
++---------------------------------------------+)";
+			cout << R"(
++----------------------------------------------------------------------------------+
+| Enter A to add || Enter O to Overwrite || Enter Any Othery Key to Return to Menu |
++----------------------------------------------------------------------------------+
+)";
+			char input;
+			cin >> input;
+			if (input == 'a' || input == 'A') {
+				cls();
+				addPedagoge(poz, poz2, poz3, poz4);
+			}
+
+			else if (input == 'o' || input == 'O') {
+				cls();
+
+			}
+		}
+
+		addPedagoge(poz, poz2, poz3, poz4);
+	}
+
+	void createDirectories() {
+		for (int i = 0; i < faculties.size(); i++) {
+			string temp;
+			temp = faculties[i].name;
+			LPTSTR dirName = new TCHAR[temp.size() + 1];
+			strcpy(dirName, temp.c_str());
+			if (CreateDirectory(dirName, NULL))
+			{
+				string temp2 = temp;
+				temp2 += "/information.txt";
+				ofstream write(temp2);
+				writeFaculties(faculties, i, write);
+
+			}
+			else if (ERROR_ALREADY_EXISTS == GetLastError())
+			{
+				cout << R"(
++-------------------------------------+
+|       Directory already exists      |
+| Do you want to overwrite the files? |
+|                (Y/N)                |
++-------------------------------------+
+)";
+				char input;
+				cin >> input;
+				if (input == 'y' || input == 'Y') {
+					string temp2 = temp;
+					temp2 += "/information.txt";
+					ofstream write(temp2);
+					writeFaculties(faculties, i, write);
+				}
+
+
+			}
+			else
+			{
+				throw exception();
+			}
+		}
 	}
