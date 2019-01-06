@@ -173,7 +173,7 @@ void addDepartament() {
 	cout << "Name: " << endl;
 	cin >> name;
 	Departament departamentIRi(id, name); 
-	cout << "To which faculty will it belong to?" << endl;
+	cout << "Which faculty will it belong to?" << endl;
 	string fName;
 	cin >> fName;
 	int poz = -1; 
@@ -228,7 +228,7 @@ void addStudy() {
 	verifyInt(years);
 	//noZeroInt(years);
 	S_Program newProgram(id, name, years);
-	cout << "To which faculty will it belong to?" << endl;
+	cout << "Which faculty will it belong to?" << endl;
 	string fName;
 	cin >> fName;
 	int poz = -1; 
@@ -247,7 +247,7 @@ void addStudy() {
 		promptocheck(faculties);
 		return;
 	}
-	cout << "To which department will it be attached to?" << endl;
+	cout << "Which department will it be attached to?" << endl;
 	cin >> fName;
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -289,7 +289,7 @@ void addSubject() {
 	cin >> hours;
 	verifyInt(hours);
 	Subjects newSubjects(name, hours, credits);
-	cout << "To which faculty will it belong to?" << endl;
+	cout << "To which faculty will it belong?" << endl;
 	string fName;
 	cin >> fName;
 	int poz = -1;
