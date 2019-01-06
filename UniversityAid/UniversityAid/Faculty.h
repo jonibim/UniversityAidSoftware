@@ -12,19 +12,21 @@ public:
 	vector<S_Program> programet;
 	vector<Subjects> sub;
 	vector<Student> studen;
+	vector<int> marks;
 
 	Faculty()
 	{
 		name = "";
 		address = "";
 	}
-	Faculty(string name, string address, vector<Departament> d, vector<S_Program> prog, vector<Subjects> sub )
+	Faculty(string name, string address, vector<Departament> d, vector<S_Program> prog, vector<Subjects> sub, vector<int> marks)
 	{
 		this->name = name;
 		this->address = address;
 		this->departamentet = d;
 		this->programet = prog;
 		this->sub = sub;
+		this->marks = marks;
 
 	}
 

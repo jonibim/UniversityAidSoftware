@@ -6,7 +6,9 @@ private:
 	string password;
 	int id;
 public:
+	
 	Student() :Person() {}
+	vector<int> marks;
 	Student(string name, string surname, string password, int age, string address, int postalcode, string birthday) {
 		this->name = name;
 		this->surname = surname;

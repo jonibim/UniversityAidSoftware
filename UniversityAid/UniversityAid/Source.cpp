@@ -20,6 +20,7 @@ void deleteDepartment();
 void deleteFaculty();
 void checkPedagogue();
 void createDirectories();
+void addMarks();
 void cls(void);
 
 int main() {
@@ -57,7 +58,7 @@ int main() {
 		}
 
 		if (choice == 7) {
-
+			addMarks();
 		}
 
 		if (choice == 8) {
@@ -171,8 +172,9 @@ void addDepartament() {
 	cout << "ID: ";
 	cin >> id;
 	verifyInt(id);
+	cin.ignore();
 	//noZeroInt(id);
-	cout << "Name: " << endl;
+	cout << "Name: ";
 	getline(cin, name);
 	Departament departamentIRi(id, name); 
 	cout << "Which faculty will it belong to?" << endl;
@@ -205,7 +207,10 @@ void addFaculty() {
 )" << endl;
 	string adresa, emer;
 	cout << "Add Faculty's name and address" << endl;
+	cout << "Name: ";
+	cin.ignore();
 	getline(cin, emer);
+	cout << "Address: ";
 	getline(cin, adresa);
 	Faculty fakultetIRi;
 	fakultetIRi.name = emer;
@@ -228,6 +233,7 @@ void addStudy() {
 	verifyInt(id);
 	//noZeroInt(id);
 	cout << "Name: ";
+	cin.ignore();
 	getline(cin, name);
 	int years;
 	cout << "Years: ";
@@ -237,6 +243,7 @@ void addStudy() {
 	S_Program newProgram(id, name, years);
 	cout << "Which faculty will it belong to?" << endl;
 	string fName;
+	cin.ignore();
 	getline(cin, fName);
 	int poz = -1; 
 	for (int i = 0; i < faculties.size(); i++) 
@@ -290,6 +297,7 @@ void addSubject() {
 	string name;
 	cout << "Type Subject's name, credits and hours:" << endl;
 	cout << "Name: ";
+	cin.ignore();
 	getline(cin, name);
 	cout << "Credits: ";
 	cin >> credits;
@@ -300,6 +308,7 @@ void addSubject() {
 	Subjects newSubjects(name, hours, credits);
 	cout << "To which faculty will it belong?" << endl;
 	string fName;
+	cin.ignore();
 	getline(cin, fName);
 	int poz = -1;
 	for (int i = 0; i < faculties.size(); i++)
@@ -318,6 +327,7 @@ void addSubject() {
 		return;
 	}
 	cout << " To which department will it be added?" << endl;
+	cin.ignore();
 	getline(cin, fName);
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -336,6 +346,7 @@ void addSubject() {
 		return;
 	}
 	cout << "To which programe will it be attached?" << endl;
+	cin.ignore();
 	getline(cin, fName);
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -361,6 +372,7 @@ void addStudentstoSubject() {
 	checkFaculties(faculties);
 	cout << "To which faculty will he/she belong?" << endl;
 	string fName;
+	cin.ignore();
 	getline(cin, fName);
 	int poz = -1;
 	for (int i = 0; i < faculties.size(); i++)
@@ -379,6 +391,7 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "To which department will he/she belong?" << endl;
+	cin.ignore();
 	getline(cin, fName);
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -397,6 +410,7 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "Which programe will he/she belong to?" << endl;
+	cin.ignore();
 	getline(cin, fName);
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -415,6 +429,7 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "Which subject will he/she belong to?" << endl;
+	cin.ignore();
 	getline(cin, fName);
 	int poz4 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
@@ -633,7 +648,7 @@ void deregisterStudent() {
 		cout << "Enter Third Number shown after Program's name: ";
 		cin >> k;
 		verifyInt(k);
-		if (k > faculties[i].departamentet.size()) {
+		if (k > faculties[i].departamentet[j].programet.size()) {
 			cout << "The input is not correct" << endl;
 			cin.ignore();
 			cin.ignore();
@@ -671,6 +686,7 @@ void deleteStudy() {
 )";
 		string fName;
 		cout << "Enter Program name: ";
+		cin.ignore();
 		getline(cin, fName);
 		cls();
 		int count = 0;
@@ -752,6 +768,7 @@ void deleteDepartment() {
 )";
 		string fName;
 		cout << "Enter Department name: ";
+		cin.ignore();
 		getline(cin, fName);
 		cls();
 		int count = 0;
@@ -853,6 +870,7 @@ void checkPedagogue() {
 		checkFaculties(faculties);
 		cout << "Which faculty will he/she be assigned to?" << endl;
 		string fName;
+		cin.ignore();
 		getline(cin, fName);
 		int poz = -1;
 		for (int i = 0; i < faculties.size(); i++)
@@ -871,7 +889,8 @@ void checkPedagogue() {
 			return;
 		}
 		cout << "Which department will he/she be assigned to?" << endl;
-		cin >> fName;
+		cin.ignore();
+		getline(cin, fName);
 		int poz2 = -1;
 		for (int i = 0; i < faculties[poz].departamentet.size(); i++)
 		{
@@ -889,7 +908,8 @@ void checkPedagogue() {
 			return;
 		}
 		cout << "Which programe will he/she be assigned to?" << endl;
-		cin >> fName;
+		cin.ignore();
+		getline(cin, fName);
 		int poz3 = -1;
 		for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
 		{
@@ -907,7 +927,8 @@ void checkPedagogue() {
 			return;
 		}
 		cout << "Which subject will he/she be assigned to?" << endl;
-		cin >> fName;
+		cin.ignore();
+		getline(cin, fName);
 		int poz4 = -1;
 		for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
 		{
@@ -995,3 +1016,234 @@ void createDirectories() {
 			}
 		}
 	}
+
+void addMarks() {
+	cout << R"(
++-----------------------------------+
+| Searching Student to add Marks... |
++-----------------------------------+
+)";
+	string fName;
+	cout << "Enter First Name: ";
+	cin >> fName;
+	string sName;
+	cout << "Enter Second Name (Surname): ";
+	cin >> sName;
+	cls();
+
+	int count = 0;
+	for (int i = 0; i < faculties.size(); i++) {
+		for (int j = 0; j < faculties[i].departamentet.size(); j++) {
+			for (int k = 0; k < faculties[i].departamentet[j].programet.size(); k++) {
+				for (int l = 0; l < faculties[i].departamentet[j].programet[k].sub.size(); l++) {
+					for (int m = 0; m < faculties[i].departamentet[j].programet[k].sub[l].pedagog.size(); m++) {
+						for (int n = 0; n < faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student.size(); n++) {
+							for (int o = 0; o < faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size(); o++) {
+								if (faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name == fName && faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname == sName) {
+									cout << "This student is registered in:" << endl;
+									cout << "Faculty: " << faculties[i].name << " [" << i << "]" << endl;
+									cout << "Departament: " << faculties[i].departamentet[j].nameDepartament << " [" << j << "]" << endl;
+									cout << "Program Name: " << faculties[i].departamentet[j].programet[k].nameProgram << " [" << k << "]" << endl;
+									cout << "Subject: " << faculties[i].departamentet[j].programet[k].sub[l].name << " [" << l << "]" << endl;
+									cout << "Pedagogue: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].name << " [" << m << "]" << endl;
+									cout << "Student: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name << " " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname << endl;
+									cout << "Marks: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks[o] << endl;
+									count++;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+	if (count == 0) {
+		cls();
+		cout << R"(
++--------------------------+
+| Cannot find this Student |
+|   Returning to Menu...   |
++--------------------------+
+)";
+		Sleep(4000);
+		return;
+	}
+
+	cout << R"(
++----------------------------------------------------+
+|              To add marks to a student             |
+|     Select the belonging numbers of each entity    |
+|                Which are shown in []               |
+| Start by Faculty until you reach Student's number  |
++----------------------------------------------------+
+)";
+	int i;
+	cout << "Enter First Number shown after Faculty's name: ";
+	cin >> i;
+	verifyInt(i);
+	if (i > faculties.size()) {
+		cout << "The input is not correct" << endl;
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+	int j;
+	cout << "Enter Second Number shown after Department's name: ";
+	cin >> j;
+	verifyInt(j);
+	if (j > faculties[i].departamentet.size()) {
+		cout << "The input is not correct" << endl;
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+	int k;
+	cout << "Enter Third Number shown after Program's name: ";
+	cin >> k;
+	verifyInt(k);
+	if (k > faculties[i].departamentet[j].programet.size()) {
+		cout << "The input is not correct" << endl;
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+
+	int l;
+	cout << "Enter Fourth Number shown after Subject's name: ";
+	cin >> l;
+	verifyInt(l);
+	if (l > faculties[i].departamentet[j].programet[k].sub.size()) {
+		cout << "The input is not correct" << endl;
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+
+	int m;
+	cout << "Enter Fifth Number shown after Pedagogue's name: ";
+	cin >> m;
+	verifyInt(m);
+	if (m > faculties[i].departamentet[j].programet[k].sub[l].pedagog.size()) {
+		cout << "The input is not correct" << endl;
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+
+	int n;
+	cout << "Enter Sixth Number shown after Student's name: ";
+	cin >> n;
+	verifyInt(n);
+	if (n > faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student.size()) {
+		cout << "The input is not correct" << endl;
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+
+	if (faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size() != 0){
+		cout << R"(
++----------------------------------------------------+
+| There appears to be existing marks on this student |
++----------------------------------------------------+
+)";
+		cout << R"(
++---------------+--------------+--------------+
+| [O] Overwrite | [A] Add      | [D] Delete   |
++---------------+--------------+--------------+
+)";
+		char input;
+		cin >> input;
+		if (input == 'O' || input == 'o') {
+			cout << R"(
++-----------------------+
+| Overwriting a Mark... |
++-----------------------+
+)";
+			int o;
+			cout << "Enter the Sevnth Number shown after Mark: ";
+			cin >> o;
+			verifyInt(o);
+			if (o > faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size()) {
+				cout << "The input is not correct" << endl;
+				cin.ignore();
+				cin.ignore();
+				return;
+			}
+			cout << " Enter desired mark: ";
+			int mark;
+			cin >> mark;
+			verifyInt(mark);
+			faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks[o] = mark;
+			cls();
+			cout << R"(
++------------------+
+| Mark Overwritten |
++------------------+
+)";
+			Sleep(4000);
+			return;
+		}
+
+		if (input == 'D' || input == 'd') {
+			cout << R"(
++--------------------+
+| Deleting a Mark... |
++--------------------+
+)";
+			int o;
+			cout << "Enter the Sevnth Number shown after Mark: ";
+			cin >> o;
+			verifyInt(o);
+			if (o > faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size()) {
+				cout << "The input is not correct" << endl;
+				cin.ignore();
+				cin.ignore();
+				return;
+			}
+
+			faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.erase(faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.begin() + o);
+			cls();
+			cout << R"(
++--------------+
+| Mark Deleted |
++--------------+
+)";
+			Sleep(4000);
+			return;
+
+
+		}
+
+		if (input != 'A' || input != 'a') {
+			cls();
+			cout << R"(
++----------------------+
+|     Invalid input    |
+| Returning to Menu... |
++----------------------+
+)";
+			Sleep(4000);
+			return;
+		}
+	}
+
+	cout << R"(
++------------------+
+| Adding a Mark... |
++------------------+
+)";
+	cout << " Enter desired mark: ";
+	int mark;
+	cin >> mark;
+	verifyInt(mark);
+	faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.push_back(mark);
+	cls();
+	cout << R"(
++------------+
+| Mark Added |
++------------+
+)";
+	Sleep(4000);
+}
