@@ -14,6 +14,7 @@ using namespace std;
 //Extra Functions
 void verifyInt(int);
 void noZeroInt(int);
+void cls(void);
 
 void noZeroInt(int a) { //WIP!
 	if (a <= 0) {
@@ -38,6 +39,11 @@ void verifyInt(int a) {
 		cin >> a;
 	}
 }
+
+void cls() {
+	system("CLS");
+}
+
 
 
 

@@ -93,6 +93,17 @@ void checkFaculties(vector<Faculty> faculties) {
 	}
 }
 
+void promptocheck(vector<Faculty> faculties) {
+	char input;
+	cin >> input;
+	if (input == 'y' || input == 'Y') {
+		cls();
+		checkFaculties(faculties);
+		cout << "Press Enter to return to Menu";
+		cin.ignore();
+		cin.ignore();
+	}
+}
 
 //void checkDepartments(vector<Departament> departamentet) {
 //	for (int i = 0; i < faculties.size(); i++) {
