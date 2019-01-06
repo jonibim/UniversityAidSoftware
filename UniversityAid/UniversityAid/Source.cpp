@@ -173,7 +173,7 @@ void addDepartament() {
 	cout << "Name: " << endl;
 	cin >> name;
 	Departament departamentIRi(id, name); 
-	cout << "Cilit fakultet do i perkasi?" << endl;
+	cout << "To which faculty will it belong to?" << endl;
 	string fName;
 	cin >> fName;
 	int poz = -1; 
@@ -200,7 +200,7 @@ void addFaculty() {
 +------------------+
 )" << endl;
 	string adresa, emer;
-	cout << "Vendosni emrin dhe adresen e Fakultetit" << endl;
+	cout << "Add Faculty's name and address" << endl;
 	cin >> emer;
 	cin >> adresa;
 	Faculty fakultetIRi;
@@ -216,7 +216,7 @@ void addStudy() {
 )" << endl;
 	int id;
 	string name;
-	cout << "Add Study Program ID, name and years:" << endl;
+	cout << "Add Study Program's ID, name and years:" << endl;
 	cout << "ID: ";
 	cin >> id;
 	verifyInt(id);
@@ -228,7 +228,7 @@ void addStudy() {
 	verifyInt(years);
 	//noZeroInt(years);
 	S_Program newProgram(id, name, years);
-	cout << "Cilit fakultet do i perkasi?" << endl;
+	cout << "To which faculty will it belong to?" << endl;
 	string fName;
 	cin >> fName;
 	int poz = -1; 
@@ -247,7 +247,7 @@ void addStudy() {
 		promptocheck(faculties);
 		return;
 	}
-	cout << "Cilit departament do i perkasi?" << endl;
+	cout << "To which department will it be attached to?" << endl;
 	cin >> fName;
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -279,7 +279,7 @@ void addSubject() {
 )" << endl;
 	int credits, hours;
 	string name;
-	cout << "Add Subject name, credits and hours:" << endl;
+	cout << "Type Subject's name, credits and hours:" << endl;
 	cout << "Name: ";
 	cin >> name;
 	cout << "Credits: ";
@@ -289,7 +289,7 @@ void addSubject() {
 	cin >> hours;
 	verifyInt(hours);
 	Subjects newSubjects(name, hours, credits);
-	cout << "Cilit fakultet do i perkasi?" << endl;
+	cout << "To which faculty will it belong to?" << endl;
 	string fName;
 	cin >> fName;
 	int poz = -1;
@@ -308,7 +308,7 @@ void addSubject() {
 		promptocheck(faculties);
 		return;
 	}
-	cout << "Cilit departament do i perkasi?" << endl;
+	cout << " To which department will it be added?" << endl;
 	cin >> fName;
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -321,12 +321,12 @@ void addSubject() {
 	}
 	if (poz2 == -1)
 	{
-		cout << "This departament cannot be found" << endl;
+		cout << "This department cannot be found" << endl;
 		cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 		promptocheck(faculties);
 		return;
 	}
-	cout << "Cilit program do i perkasi?" << endl;
+	cout << "To which programe will it be attached?" << endl;
 	cin >> fName;
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -349,7 +349,7 @@ void addSubject() {
 }
 
 void addStudentstoSubject() {
-	cout << "Cilit fakultet do i perkasi?" << endl;
+	cout << "To which faculty will he/she belong?" << endl;
 	string fName;
 	cin >> fName;
 	int poz = -1;
@@ -368,7 +368,7 @@ void addStudentstoSubject() {
 		promptocheck(faculties);
 		return;
 	}
-	cout << "Cilit departament do i perkasi?" << endl;
+	cout << "To which department will he/she belong?" << endl;
 	cin >> fName;
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -386,7 +386,7 @@ void addStudentstoSubject() {
 		promptocheck(faculties);
 		return;
 	}
-	cout << "Cilit program do i perkasi?" << endl;
+	cout << "Which programe will he/she belong to?" << endl;
 	cin >> fName;
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -404,7 +404,7 @@ void addStudentstoSubject() {
 		promptocheck(faculties);
 		return;
 	}
-	cout << "Cilit mesim do i perkasi?" << endl;
+	cout << "Which subject will he/she belong to?" << endl;
 	cin >> fName;
 	int poz4 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
@@ -494,7 +494,7 @@ void addStudentstoSubject() {
 | Adding a Student |
 +------------------+
 )";
-		cout << "Cilit pedagog?" << endl;
+		cout << "To which pedagogue will he/she be assigned?" << endl;
 		string fName;
 		cin >> fName;
 		int poz5 = -1;
@@ -508,7 +508,7 @@ void addStudentstoSubject() {
 		}
 		if (poz5 == -1)
 		{
-			cout << "This pedagoge cannot be found" << endl;
+			cout << "This pedagogue cannot be found" << endl;
 			cout << "Check all the exsisiting faculties? (Y/N)" << endl;
 			promptocheck(faculties);
 			return;
@@ -603,7 +603,7 @@ void addStudentstoSubject() {
 			return;
 		}
 		int j;
-		cout << "Enter Second Number shown afrer Department's name: ";
+		cout << "Enter Second Number shown after Department's name: ";
 		cin >> j;
 		verifyInt(j);
 		if (j > faculties[i].departamentet.size()) {
@@ -696,7 +696,7 @@ void addStudentstoSubject() {
 			return;
 		}
 		int j;
-		cout << "Enter Second Number shown afrer Department's name: ";
+		cout << "Enter Second Number shown after Department's name: ";
 		cin >> j;
 		verifyInt(j);
 		if (j > faculties[i].departamentet.size()) {
@@ -831,7 +831,7 @@ void addStudentstoSubject() {
 	}
 
 	void checkPedagogue() {
-		cout << "Cilit fakultet do i perkasi?" << endl;
+		cout << "Which faculty will he/she be assigned to?" << endl;
 		string fName;
 		cin >> fName;
 		int poz = -1;
@@ -850,7 +850,7 @@ void addStudentstoSubject() {
 			promptocheck(faculties);
 			return;
 		}
-		cout << "Cilit departament do i perkasi?" << endl;
+		cout << "Which department will he/she be assigned to?" << endl;
 		cin >> fName;
 		int poz2 = -1;
 		for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -868,7 +868,7 @@ void addStudentstoSubject() {
 			promptocheck(faculties);
 			return;
 		}
-		cout << "Cilit program do i perkasi?" << endl;
+		cout << "Which programe will he/she be assigned to?" << endl;
 		cin >> fName;
 		int poz3 = -1;
 		for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -886,7 +886,7 @@ void addStudentstoSubject() {
 			promptocheck(faculties);
 			return;
 		}
-		cout << "Cilit mesim do i perkasi?" << endl;
+		cout << "Which subject will he/she be assigned to?" << endl;
 		cin >> fName;
 		int poz4 = -1;
 		for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
