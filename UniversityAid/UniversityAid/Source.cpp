@@ -31,6 +31,7 @@ int main() {
 		int choice;
 		cout << "Enter option: (0-12): " << endl;
 		cin >> choice;
+		verifyInt(choice);
 		cls();
 		if (choice == 1) {
 			addFaculty();
@@ -157,6 +158,7 @@ void mainMenu() {
 
 
 void addDepartament() {
+	checkFaculties(faculties);
 	cout << R"(
 +---------------------+
 | Adding a Department |
@@ -171,11 +173,11 @@ void addDepartament() {
 	verifyInt(id);
 	//noZeroInt(id);
 	cout << "Name: " << endl;
-	cin >> name;
+	getline(cin, name);
 	Departament departamentIRi(id, name); 
 	cout << "Which faculty will it belong to?" << endl;
 	string fName;
-	cin >> fName;
+	getline(cin, fName);
 	int poz = -1; 
 	for (int i = 0; i < faculties.size(); i++) 	{
 		if (faculties[i].name == fName)
@@ -193,7 +195,9 @@ void addDepartament() {
 	}
 	faculties[poz].departamentet.push_back(departamentIRi);
 };
+
 void addFaculty() {
+	checkFaculties(faculties);
 	cout << R"(
 +------------------+
 | Adding a Faculty |
@@ -201,14 +205,16 @@ void addFaculty() {
 )" << endl;
 	string adresa, emer;
 	cout << "Add Faculty's name and address" << endl;
-	cin >> emer;
-	cin >> adresa;
+	getline(cin, emer);
+	getline(cin, adresa);
 	Faculty fakultetIRi;
 	fakultetIRi.name = emer;
 	fakultetIRi.address = adresa;
 	faculties.push_back(fakultetIRi);
 };
+
 void addStudy() {
+	checkFaculties(faculties);
 	cout << R"(
 +------------------------+
 | Adding a Study Program |
@@ -221,7 +227,8 @@ void addStudy() {
 	cin >> id;
 	verifyInt(id);
 	//noZeroInt(id);
-	cin >> name;
+	cout << "Name: ";
+	getline(cin, name);
 	int years;
 	cout << "Years: ";
 	cin >> years;
@@ -230,7 +237,7 @@ void addStudy() {
 	S_Program newProgram(id, name, years);
 	cout << "Which faculty will it belong to?" << endl;
 	string fName;
-	cin >> fName;
+	getline(cin, fName);
 	int poz = -1; 
 	for (int i = 0; i < faculties.size(); i++) 
 	{
@@ -248,7 +255,7 @@ void addStudy() {
 		return;
 	}
 	cout << "Which department will it be attached to?" << endl;
-	cin >> fName;
+	getline(cin, fName);
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
 	{
@@ -271,7 +278,9 @@ void addStudy() {
 	
 
 };
+
 void addSubject() {
+	checkFaculties(faculties);
 	cout << R"(
 +------------------+
 | Adding a Subject |
@@ -281,7 +290,7 @@ void addSubject() {
 	string name;
 	cout << "Type Subject's name, credits and hours:" << endl;
 	cout << "Name: ";
-	cin >> name;
+	getline(cin, name);
 	cout << "Credits: ";
 	cin >> credits;
 	verifyInt(credits);
@@ -291,7 +300,7 @@ void addSubject() {
 	Subjects newSubjects(name, hours, credits);
 	cout << "To which faculty will it belong?" << endl;
 	string fName;
-	cin >> fName;
+	getline(cin, fName);
 	int poz = -1;
 	for (int i = 0; i < faculties.size(); i++)
 	{
@@ -309,7 +318,7 @@ void addSubject() {
 		return;
 	}
 	cout << " To which department will it be added?" << endl;
-	cin >> fName;
+	getline(cin, fName);
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
 	{
@@ -327,7 +336,7 @@ void addSubject() {
 		return;
 	}
 	cout << "To which programe will it be attached?" << endl;
-	cin >> fName;
+	getline(cin, fName);
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
 	{
@@ -349,9 +358,10 @@ void addSubject() {
 }
 
 void addStudentstoSubject() {
+	checkFaculties(faculties);
 	cout << "To which faculty will he/she belong?" << endl;
 	string fName;
-	cin >> fName;
+	getline(cin, fName);
 	int poz = -1;
 	for (int i = 0; i < faculties.size(); i++)
 	{
@@ -369,7 +379,7 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "To which department will he/she belong?" << endl;
-	cin >> fName;
+	getline(cin, fName);
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
 	{
@@ -387,7 +397,7 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "Which programe will he/she belong to?" << endl;
-	cin >> fName;
+	getline(cin, fName);
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
 	{
@@ -405,7 +415,7 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "Which subject will he/she belong to?" << endl;
-	cin >> fName;
+	getline(cin, fName);
 	int poz4 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
 	{
@@ -455,7 +465,8 @@ void addStudentstoSubject() {
 		}
 	}
 
-	void addPedagoge(int poz, int poz2, int poz3, int poz4) {
+void addPedagoge(int poz, int poz2, int poz3, int poz4) {
+		checkFaculties(faculties);
 		cout << R"(
 +--------------------+
 | Adding a Pedagogue |
@@ -477,18 +488,19 @@ void addStudentstoSubject() {
 		cin >> salary;
 		verifyInt(salary);
 		cout << "Address: ";
-		cin >> address;
+		getline(cin, address);
 		cout << " Postal Code: ";
 		cin >> postalcode;
 		verifyInt(postalcode);
 		cout << "Birthday: ";
-		cin >> birthday;
+		getline(cin, birthday);
 		Pedagog newPedagogue(id,password,salary,name,surname,address,postalcode,birthday);
 		faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.push_back(newPedagogue);
 
 	}
 
-	void addStudent(int poz, int poz2, int poz3, int poz4) {
+void addStudent(int poz, int poz2, int poz3, int poz4) {
+		checkFaculties(faculties);
 		cout << R"(
 +------------------+
 | Adding a Student |
@@ -496,11 +508,15 @@ void addStudentstoSubject() {
 )";
 		cout << "To which pedagogue will he/she be assigned?" << endl;
 		string fName;
+		string sName;
+		cout << "Name: ";
 		cin >> fName;
+		cout << "Surname: ";
+		cin >> sName;
 		int poz5 = -1;
 		for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.size(); i++)
 		{
-			if (faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[i].name == fName)
+			if (faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[i].name == fName && faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[i].surname == sName)
 			{
 				poz5 = i;
 				break;
@@ -529,27 +545,28 @@ void addStudentstoSubject() {
 		cin >> age;
 		verifyInt(age);
 		cout << "Address: ";
-		cin >> address;
+		getline(cin, address);
 		cout << " Postal Code: ";
 		cin >> postalcode;
 		verifyInt(postalcode);
 		cout << "Birthday: ";
-		cin >> birthday;
+		getline(cin, birthday);
 		Student newStudent(name, surname,password,age,address,postalcode,birthday);
 		faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[poz5].student.push_back(newStudent);
 	}
 
-	void deregisterStudent() {
+void deregisterStudent() {
+		checkFaculties(faculties);
 		cout << R"(
 +----------------------+
 | Searching Student... |
 +----------------------+
-)";
-		cout << "Enter First Name: ";
+)"; 
 		string fName;
+		cout << "Enter First Name: ";
+		cin >> fName;
 		string sName;
 		cout << "Enter Second Name (Surname): ";
-		cin >> fName;
 		cin >> sName;
 		cls();
 
@@ -645,7 +662,8 @@ void addStudentstoSubject() {
 		}
 	}
 
-	void deleteStudy() {
+void deleteStudy() {
+		checkFaculties(faculties);
 		cout << R"(
 +----------------------------+
 | Searching Study Program... |
@@ -653,7 +671,7 @@ void addStudentstoSubject() {
 )";
 		string fName;
 		cout << "Enter Program name: ";
-		cin >> fName;
+		getline(cin, fName);
 		cls();
 		int count = 0;
 		for (int i = 0; i < faculties.size(); i++) {
@@ -725,7 +743,8 @@ void addStudentstoSubject() {
 		}
 	}
 
-	void deleteDepartment() {
+void deleteDepartment() {
+		checkFaculties(faculties);
 		cout<<R"(
 +-------------------------+
 | Searching Department... |
@@ -733,7 +752,7 @@ void addStudentstoSubject() {
 )";
 		string fName;
 		cout << "Enter Department name: ";
-		cin >> fName;
+		getline(cin, fName);
 		cls();
 		int count = 0;
 		for (int i = 0; i < faculties.size(); i++) {
@@ -792,8 +811,8 @@ void addStudentstoSubject() {
 		}
 	}
 
-
-	void deleteFaculty() {
+void deleteFaculty() {
+		checkFaculties(faculties);
 		cout << R"(
 +----------------------+
 | Searching Faculty... |
@@ -830,10 +849,11 @@ void addStudentstoSubject() {
 
 	}
 
-	void checkPedagogue() {
+void checkPedagogue() {
+		checkFaculties(faculties);
 		cout << "Which faculty will he/she be assigned to?" << endl;
 		string fName;
-		cin >> fName;
+		getline(cin, fName);
 		int poz = -1;
 		for (int i = 0; i < faculties.size(); i++)
 		{
@@ -934,7 +954,8 @@ void addStudentstoSubject() {
 		addPedagoge(poz, poz2, poz3, poz4);
 	}
 
-	void createDirectories() {
+void createDirectories() {
+		checkFaculties(faculties);
 		for (int i = 0; i < faculties.size(); i++) {
 			string temp;
 			temp = faculties[i].name;
