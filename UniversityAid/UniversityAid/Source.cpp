@@ -15,6 +15,9 @@ void addStudentstoSubject();
 void addPedagoge(int,int,int,int);
 void addStudent(int,int,int,int);
 void deregisterStudent();
+void deleteStudy();
+void deleteDepartment();
+void deleteFaculty();
 void cls(void);
 
 int main() {
@@ -55,29 +58,26 @@ int main() {
 		}
 
 		if (choice == 8) {
-
+			deleteStudy();
 		}
 
 		if (choice == 9) {
-
+			deleteDepartment();
 		}
 
 		if (choice == 10) {
-
+			deleteFaculty();
 		}
 
 		if (choice == 11) {
 
 		}
 
-		if (choice == 11) {
-		}
-
-		if (choice == 15) {
-			cout << "Debug Size" << endl;
+		if (choice == 13) {
+			cout << "Debug Vector Size" << endl;
 			DebugSize(faculties);
-			string temp;
-			cin >> temp;
+			cin.ignore();
+			cin.ignore();
 		}
 
 		if (choice <= 0) {
@@ -542,8 +542,8 @@ void addStudentstoSubject() {
 		cls();
 
 		int count = 0;
-		for (int i = 0; i < faculties.size(); i++)
-			for (int j = 0; j < faculties[i].departamentet.size(); j++)
+		for (int i = 0; i < faculties.size(); i++) {
+			for (int j = 0; j < faculties[i].departamentet.size(); j++) {
 				for (int k = 0; k < faculties[i].departamentet[j].programet.size(); k++) {
 					for (int l = 0; l < faculties[i].departamentet[j].programet[k].sub.size(); l++) {
 						for (int m = 0; m < faculties[i].departamentet[j].programet[k].sub[l].pedagog.size(); m++) {
@@ -559,6 +559,9 @@ void addStudentstoSubject() {
 						}
 					}
 				}
+			}
+		
+				}
 		if (count == 0) {
 			cls();
 			cout << R"(
@@ -567,6 +570,7 @@ void addStudentstoSubject() {
 |   Returning to Menu...   |
 +--------------------------+
 )";
+			Sleep(4000);
 			return;
 		}
 
@@ -579,6 +583,7 @@ void addStudentstoSubject() {
 		int i;
 		cout << "Enter First Number shown after Faculty's name: ";
 		cin >> i;
+		verifyInt(i);
 		if (i > faculties.size()) {
 			cout << "The input is not correct" << endl;
 			cin.ignore();
@@ -588,6 +593,7 @@ void addStudentstoSubject() {
 		int j;
 		cout << "Enter Second Number shown afrer Department's name: ";
 		cin >> j;
+		verifyInt(j);
 		if (j > faculties[i].departamentet.size()) {
 			cout << "The input is not correct" << endl;
 			cin.ignore();
@@ -597,6 +603,7 @@ void addStudentstoSubject() {
 		int k;
 		cout << "Enter Third Number shown after Program's name: ";
 		cin >> k;
+		verifyInt(k);
 		if (k > faculties[i].departamentet.size()) {
 			cout << "The input is not correct" << endl;
 			cin.ignore();
@@ -625,4 +632,195 @@ void addStudentstoSubject() {
 			Sleep(4000);
 			return;
 		}
+	}
+
+	void deleteStudy() {
+		cout << R"(
++----------------------------+
+| Searching Study Program... |
+|                            |
++----------------------------+
+)";
+		string fName;
+		cout << "Enter Program name: ";
+		cin >> fName;
+		cls();
+		int count = 0;
+		for (int i = 0; i < faculties.size(); i++) {
+			for (int j = 0; j < faculties[i].departamentet.size(); j++) {
+				for (int k = 0; k < faculties[i].departamentet[j].programet.size(); k++) {
+					if (faculties[i].departamentet[j].programet[k].nameProgram == fName) {
+						cout << "This program can be found in:" << endl;
+						cout << "Faculty: " << faculties[i].name << " [" << i << "]" << endl;
+						cout << "Department: " << faculties[i].departamentet[j].nameDepartament << " [" << j << "]" << endl;
+						count++;
+					}
+				}
+			}
+		}
+		if (count == 0) {
+			cout << R"(
++--------------------------------+
+| Cannot find this Study Program |
+|      Returning to Menu...      |
++--------------------------------+
+)";
+			Sleep(4000);
+			return;
+		}
+
+		cout << R"(
++----------------------------------------------------------------------+
+|              Which study program do you want to delete?              |
+| Use the number displayed in [] after the faculty and department name |
++----------------------------------------------------------------------+
+)";
+		int i;
+		cout << "Enter First Number shown after Faculty's name: ";
+		cin >> i;
+		verifyInt(i);
+		if (i > faculties.size()) {
+			cout << "The input is not correct" << endl;
+			cin.ignore();
+			cin.ignore();
+			return;
+		}
+		int j;
+		cout << "Enter Second Number shown afrer Department's name: ";
+		cin >> j;
+		verifyInt(j);
+		if (j > faculties[i].departamentet.size()) {
+			cout << "The input is not correct" << endl;
+			cin.ignore();
+			cin.ignore();
+			return;
+		}
+
+		count = 0;
+		for (int k = 0; k < faculties[i].departamentet[j].programet.size(); k++) {
+			if (faculties[i].departamentet[j].programet[k].nameProgram == fName) {
+				faculties[i].departamentet[j].programet.erase(faculties[i].departamentet[j].programet.begin() + k);
+				count++;
+			}
+		}
+
+		if (count != 0) {
+			cout << R"(
++-----------------------+
+| Study Program Deleted |
+|                       |
++-----------------------+
+)";
+			Sleep(4000);
+			return;
+		}
+	}
+
+	void deleteDepartment() {
+		cout<<R"(
++-------------------------+
+| Searching Department... |
+|                         |
++-------------------------+
+)";
+		string fName;
+		cout << "Enter Department name: ";
+		cin >> fName;
+		cls();
+		int count = 0;
+		for (int i = 0; i < faculties.size(); i++) {
+			for (int j = 0; j < faculties[i].departamentet.size(); j++) {
+				if (faculties[i].departamentet[j].nameDepartament == fName) {
+					cout << "This department can be found in:" << endl;
+					cout << "Faculty: " << faculties[i].name << " [" << i << "]" << endl;
+					count++;
+				}
+			}
+		}
+
+		if (count == 0) {
+			cout << R"(
++-----------------------------+
+| Cannot find this Department |
+|     Returning to Menu...    |
++-----------------------------+
+)";
+			Sleep(4000);
+			return;
+		}
+
+		cout << R"(
++---------------------------------------------------------+
+|         Which department do you want to delete?         |
+| Use the number displayed in [] after the faculty's name |
++---------------------------------------------------------+
+)";
+		int i;
+		cout << "Enter First Number shown after Faculty's name: ";
+		cin >> i;
+		verifyInt(i);
+		if (i > faculties.size()) {
+			cout << "The input is not correct" << endl;
+			cin.ignore();
+			cin.ignore();
+			return;
+		}
+		count = 0;
+		for (int j = 0; j < faculties[i].departamentet.size(); j++) {
+			if (faculties[i].departamentet[j].nameDepartament == fName) {
+				faculties[i].departamentet.erase(faculties[i].departamentet.begin() + j);
+				count++;
+			}
+		}
+
+		if (count != 0) {
+			cout << R"(
++--------------------+
+| Department Deleted |
+|                    |
++--------------------+
+)";
+			Sleep(4000);
+			return;
+		}
+	}
+
+
+	void deleteFaculty() {
+		cout << R"(
++----------------------+
+| Searching Faculty... |
+|                      |
++----------------------+
+)";
+		for (int i = 0; i < faculties.size(); i++) {
+			cout << "[" << i << "] Name: " << faculties[i].name << endl;
+		}
+
+		cout << R"(
++--------------------------------------+
+| Which Faculty do you want to delete? |
+|    Use the number displayed in []    |
++--------------------------------------+
+)";
+		int i;
+		cout << "Enter Number: ";
+		cin >> i;
+		verifyInt(i);
+		if (i > faculties.size()) {
+			cout << "The input is not correct" << endl;
+			cin.ignore();
+			cin.ignore();
+			return;
+		}
+
+		faculties.erase(faculties.begin() + i);
+		cout << R"(
++-----------------+
+| Faculty Deleted |
+|                 |
++-----------------+
+)";
+		Sleep(4000);
+
 	}
