@@ -84,7 +84,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -120,7 +124,9 @@
   <ItemGroup>
     <ClInclude Include="Departament.h" />
     <ClInclude Include="Faculty.h" />
+    <ClInclude Include="Libraries.h" />
     <ClInclude Include="Pedagog.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Subjects.h" />
     <ClInclude Include="S_Program.h" />
