@@ -390,7 +390,6 @@ void addStudentstoSubject() {
 	}
 	cout << "To which department will he/she belong?" << endl;
 	getline(cin, fName);
-	cout << fName;
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
 	{
