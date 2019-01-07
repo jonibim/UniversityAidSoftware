@@ -327,7 +327,6 @@ void addSubject() {
 		return;
 	}
 	cout << " To which department will it be added?" << endl;
-	cin.ignore();
 	getline(cin, fName);
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -346,7 +345,6 @@ void addSubject() {
 		return;
 	}
 	cout << "To which programe will it be attached?" << endl;
-	cin.ignore();
 	getline(cin, fName);
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -391,8 +389,8 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "To which department will he/she belong?" << endl;
-	cin.ignore();
 	getline(cin, fName);
+	cout << fName;
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
 	{
@@ -410,7 +408,6 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "Which programe will he/she belong to?" << endl;
-	cin.ignore();
 	getline(cin, fName);
 	int poz3 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -429,7 +426,6 @@ void addStudentstoSubject() {
 		return;
 	}
 	cout << "Which subject will he/she belong to?" << endl;
-	cin.ignore();
 	getline(cin, fName);
 	int poz4 = -1;
 	for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
@@ -453,7 +449,8 @@ void addStudentstoSubject() {
 +------------------------------------------------+
 | This subject doesn't have a pedagogue assigned |
 |                                                |
-+------------------------------------------------+)";
++------------------------------------------------+
+)";
 		cout << "Do you want to assign a pedagogue to " << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].name << " ? (Y/N)";
 		char input;
 		cin >> input;
@@ -889,7 +886,6 @@ void checkPedagogue() {
 			return;
 		}
 		cout << "Which department will he/she be assigned to?" << endl;
-		cin.ignore();
 		getline(cin, fName);
 		int poz2 = -1;
 		for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -908,7 +904,6 @@ void checkPedagogue() {
 			return;
 		}
 		cout << "Which programe will he/she be assigned to?" << endl;
-		cin.ignore();
 		getline(cin, fName);
 		int poz3 = -1;
 		for (int i = 0; i < faculties[poz].departamentet[poz2].programet.size(); i++)
@@ -927,7 +922,6 @@ void checkPedagogue() {
 			return;
 		}
 		cout << "Which subject will he/she be assigned to?" << endl;
-		cin.ignore();
 		getline(cin, fName);
 		int poz4 = -1;
 		for (int i = 0; i < faculties[poz].departamentet[poz2].programet[poz3].sub.size(); i++)
