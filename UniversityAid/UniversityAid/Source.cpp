@@ -19,6 +19,7 @@ void deleteStudy();
 void deleteDepartment();
 void deleteFaculty();
 void checkPedagogue();
+void overwritePedagogue(int, int, int, int);
 void createDirectories();
 void addMarks();
 void cls(void);
@@ -119,6 +120,7 @@ int main() {
 }
 
 void welcomeScreen(void){
+	cls();
 	cout << R"(
 ##############################################################################
 
@@ -196,6 +198,7 @@ void addDepartament() {
 		return;
 	}
 	faculties[poz].departamentet.push_back(departamentIRi);
+	cls();
 };
 
 void addFaculty() {
@@ -216,6 +219,7 @@ void addFaculty() {
 	fakultetIRi.name = emer;
 	fakultetIRi.address = adresa;
 	faculties.push_back(fakultetIRi);
+	cls();
 };
 
 void addStudy() {
@@ -231,7 +235,6 @@ void addStudy() {
 	cout << "ID: ";
 	cin >> id;
 	verifyInt(id);
-	//noZeroInt(id);
 	cout << "Name: ";
 	cin.ignore();
 	getline(cin, name);
@@ -239,7 +242,6 @@ void addStudy() {
 	cout << "Years: ";
 	cin >> years;
 	verifyInt(years);
-	//noZeroInt(years);
 	S_Program newProgram(id, name, years);
 	cout << "Which faculty will it belong to?" << endl;
 	string fName;
@@ -280,6 +282,7 @@ void addStudy() {
 		return;
 	}
 	faculties[poz].departamentet[poz2].programet.push_back(newProgram);
+	cls();
 
 
 	
@@ -326,7 +329,7 @@ void addSubject() {
 		promptocheck(faculties);
 		return;
 	}
-	cout << " To which department will it be added?" << endl;
+	cout << "To which department will it be added?" << endl;
 	getline(cin, fName);
 	int poz2 = -1;
 	for (int i = 0; i < faculties[poz].departamentet.size(); i++)
@@ -363,6 +366,7 @@ void addSubject() {
 		return;
 	}
 	faculties[poz].departamentet[poz2].programet[poz3].sub.push_back(newSubjects);
+	cls();
 
 }
 
@@ -450,7 +454,8 @@ void addStudentstoSubject() {
 |                                                |
 +------------------------------------------------+
 )";
-		cout << "Do you want to assign a pedagogue to " << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].name << " ? (Y/N)";
+		cout << "You need to add a pedagogue first!" << endl;
+		cout << "Do you want to assign a pedagogue to " << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].name <<" now? (Y/N)";
 		char input;
 		cin >> input;
 		if (input == 'y' || input == 'Y') {
@@ -477,6 +482,7 @@ void addStudentstoSubject() {
 	}
 
 void addPedagoge(int poz, int poz2, int poz3, int poz4) {
+		cls();
 		checkFaculties(faculties);
 		cout << R"(
 +--------------------+
@@ -495,15 +501,17 @@ void addPedagoge(int poz, int poz2, int poz3, int poz4) {
 		cin >> surname;
 		cout << "Password: ";
 		cin >> password;
-		cout << "Salary";
+		cout << "Salary: ";
 		cin >> salary;
 		verifyInt(salary);
 		cout << "Address: ";
+		cin.ignore();
 		getline(cin, address);
 		cout << " Postal Code: ";
 		cin >> postalcode;
 		verifyInt(postalcode);
 		cout << "Birthday: ";
+		cin.ignore();
 		getline(cin, birthday);
 		Pedagog newPedagogue(id,password,salary,name,surname,address,postalcode,birthday);
 		faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.push_back(newPedagogue);
@@ -511,13 +519,16 @@ void addPedagoge(int poz, int poz2, int poz3, int poz4) {
 	}
 
 void addStudent(int poz, int poz2, int poz3, int poz4) {
+		cls();
 		checkFaculties(faculties);
+		cout << endl;
 		cout << R"(
 +------------------+
 | Adding a Student |
 +------------------+
 )";
-		cout << "To which pedagogue will he/she be assigned?" << endl;
+		cout << endl;
+		cout << "To which PEDAGOGUE will he/she be assigned?" << endl;
 		string fName;
 		string sName;
 		cout << "Name: ";
@@ -556,17 +567,20 @@ void addStudent(int poz, int poz2, int poz3, int poz4) {
 		cin >> age;
 		verifyInt(age);
 		cout << "Address: ";
+		cin.ignore();
 		getline(cin, address);
-		cout << " Postal Code: ";
+		cout << "Postal Code: ";
 		cin >> postalcode;
 		verifyInt(postalcode);
 		cout << "Birthday: ";
+		cin.ignore();
 		getline(cin, birthday);
 		Student newStudent(name, surname,password,age,address,postalcode,birthday);
 		faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[poz5].student.push_back(newStudent);
 	}
 
 void deregisterStudent() {
+		cls();
 		checkFaculties(faculties);
 		cout << R"(
 +----------------------+
@@ -751,11 +765,13 @@ void deleteStudy() {
 +-----------------------+
 )";
 			Sleep(4000);
+			cls();
 			return;
 		}
 	}
 
 void deleteDepartment() {
+		cls();
 		checkFaculties(faculties);
 		cout<<R"(
 +-------------------------+
@@ -820,11 +836,13 @@ void deleteDepartment() {
 +--------------------+
 )";
 			Sleep(4000);
+			cls();
 			return;
 		}
 	}
 
 void deleteFaculty() {
+		cls();	
 		checkFaculties(faculties);
 		cout << R"(
 +----------------------+
@@ -859,10 +877,12 @@ void deleteFaculty() {
 +-----------------+
 )";
 		Sleep(4000);
+		cls();
 
 	}
 
 void checkPedagogue() {
+		cls();
 		checkFaculties(faculties);
 		cout << "Which faculty will he/she be assigned to?" << endl;
 		string fName;
@@ -961,15 +981,13 @@ void checkPedagogue() {
 
 			else if (input == 'o' || input == 'O') {
 				cls();
+				overwritePedagogue(poz, poz2, poz3, poz4);
 
 			}
 		}
-
-		addPedagoge(poz, poz2, poz3, poz4);
 	}
 
 void createDirectories() {
-		checkFaculties(faculties);
 		for (int i = 0; i < faculties.size(); i++) {
 			string temp;
 			temp = faculties[i].name;
@@ -1011,6 +1029,8 @@ void createDirectories() {
 	}
 
 void addMarks() {
+	cls();
+	checkFaculties(faculties);
 	cout << R"(
 +-----------------------------------+
 | Searching Student to add Marks... |
@@ -1031,17 +1051,24 @@ void addMarks() {
 				for (int l = 0; l < faculties[i].departamentet[j].programet[k].sub.size(); l++) {
 					for (int m = 0; m < faculties[i].departamentet[j].programet[k].sub[l].pedagog.size(); m++) {
 						for (int n = 0; n < faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student.size(); n++) {
-							for (int o = 0; o < faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size(); o++) {
-								if (faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name == fName && faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname == sName) {
-									cout << "This student is registered in:" << endl;
-									cout << "Faculty: " << faculties[i].name << " [" << i << "]" << endl;
-									cout << "Departament: " << faculties[i].departamentet[j].nameDepartament << " [" << j << "]" << endl;
-									cout << "Program Name: " << faculties[i].departamentet[j].programet[k].nameProgram << " [" << k << "]" << endl;
-									cout << "Subject: " << faculties[i].departamentet[j].programet[k].sub[l].name << " [" << l << "]" << endl;
-									cout << "Pedagogue: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].name << " [" << m << "]" << endl;
-									cout << "Student: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name << " " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname << endl;
-									cout << "Marks: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks[o] << endl;
-									count++;
+							if (faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name == fName && faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname == sName) {
+								cout << "This student is registered in:" << endl;
+								cout << "Faculty: " << faculties[i].name << " [" << i << "]" << endl;
+								cout << "Departament: " << faculties[i].departamentet[j].nameDepartament << " [" << j << "]" << endl;
+								cout << "Program Name: " << faculties[i].departamentet[j].programet[k].nameProgram << " [" << k << "]" << endl;
+								cout << "Subject: " << faculties[i].departamentet[j].programet[k].sub[l].name << " [" << l << "]" << endl;
+								cout << "Pedagogue: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].name << " [" << m << "]" << endl;
+								cout << "Student: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name << " " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname << endl;
+								count++;
+
+								if (faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size() != 0) {
+									for (int o = 0; o < faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size(); o++) {
+										cout << "Marks: ";
+										cout << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks[o] << " ";
+									}
+								}
+								else{
+									cout << "Marks: This student doesn't have a mark";
 								}
 							}
 						}
@@ -1049,8 +1076,9 @@ void addMarks() {
 				}
 			}
 		}
-
 	}
+
+	
 	if (count == 0) {
 		cls();
 		cout << R"(
@@ -1204,6 +1232,7 @@ void addMarks() {
 +--------------+
 )";
 			Sleep(4000);
+			cls();
 			return;
 
 
@@ -1218,6 +1247,7 @@ void addMarks() {
 +----------------------+
 )";
 			Sleep(4000);
+			cls();
 			return;
 		}
 	}
@@ -1239,4 +1269,75 @@ void addMarks() {
 +------------+
 )";
 	Sleep(4000);
+	cls();
+}
+
+void overwritePedagogue(int poz, int poz2, int poz3, int poz4){
+	cls();
+	checkFaculties(faculties);
+	cout << R"(
++----------------------------+
+| Overwriting a Pedagogue... |
++----------------------------+
+)";
+
+	cout << "Which pedagogue you want to overwrite in " << faculties[poz].name << " " << faculties[poz].departamentet[poz2].nameDepartament << " " << faculties[poz].departamentet[poz2].programet[poz3].nameProgram << " " << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].name << " ?"<< endl;
+	for (int m = 0; m < faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.size(); m++) {
+	
+		cout << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[m].name << " " << faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[m].surname << " [" << m << "] " << endl;
+	}
+
+	cout << R"(
++--------------------------------------------------------------+
+|                   To overwrite a Pedagogue                   |
+| Select the number displayed after the name Pedagogue's name  |
++--------------------------------------------------------------+
+)";
+	int m;
+	cout << "Enter the number of the pedagogue you want to overwrite: ";
+	cin>>m;
+	verifyInt(m);
+	if (m > faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog.size()) {
+		cout << "The input is not correct" << endl;
+		cin.ignore();
+		cin.ignore();
+		return;
+	}
+	cout << "Add Pedagogue ID, name, surname, salary, address, postalcode and birthday:" << endl;
+	cout << "ID:  ";
+	int id, salary, postalcode;
+	cin >> id;
+	verifyInt(id);
+	string name, surname, address, birthday, password;
+	cout << "Name: ";
+	cin >> name;
+	cout << "Surname: ";
+	cin >> surname;
+	cout << "Password: ";
+	cin >> password;
+	cout << "Salary: ";
+	cin >> salary;
+	verifyInt(salary);
+	cout << "Address: ";
+	cin.ignore();
+	getline(cin, address);
+	cout << " Postal Code: ";
+	cin >> postalcode;
+	verifyInt(postalcode);
+	cout << "Birthday: ";
+	cin.ignore();
+	getline(cin, birthday);
+	Pedagog newPedagogue(id, password, salary, name, surname, address, postalcode, birthday);
+	faculties[poz].departamentet[poz2].programet[poz3].sub[poz4].pedagog[m] = newPedagogue;
+
+	cls();
+	cout << R"(
++---------------------+
+| Overwrite completed |
++---------------------+
+)";
+	Sleep(4000);
+	cls();
+
+
 }
