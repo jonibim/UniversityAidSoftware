@@ -1061,7 +1061,7 @@ void addMarks() {
 								cout << "Program Name: " << faculties[i].departamentet[j].programet[k].nameProgram << " [" << k << "]" << endl;
 								cout << "Subject: " << faculties[i].departamentet[j].programet[k].sub[l].name << " [" << l << "]" << endl;
 								cout << "Pedagogue: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].name << " [" << m << "]" << endl;
-								cout << "Student: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name << " " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname << endl;
+								cout << "Student: " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].name << " " << faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].surname << " ["<<n<<"] "<<endl; 
 								count++;
 
 								if (faculties[i].departamentet[j].programet[k].sub[l].pedagog[m].student[n].marks.size() != 0) {
